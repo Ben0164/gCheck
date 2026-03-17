@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Soft Mint & Pastel Palette (Current Concept) -->
+    <color name="mint_green">#98FB98</color>
+    <color name="pale_mint">#E2F9E2</color>
+    <color name="pure_white">#FFFFFF</color>
+    <color name="input_gray">#EBEBEB</color>
+    <color name="charcoal">#555555</color>
+    <color name="dark_gray_text">#333333</color>
+
+    <!-- Theme Aliases -->
+    <color name="primary">#98FB98</color>
+    <color name="background">#FFFFFF</color>
+    <color name="surface">#E2F9E2</color>
+
+    <!-- Compatibility Colors for legacy layouts/drawables -->
+    <color name="soft_green">#7ED38C</color>
+    <color name="soft_green_light">#A8E6B0</color>
+    <color name="soft_green_dark">#5CB870</color>
+    <color name="bg_gradient_start">#E8F5E9</color>
+    <color name="bg_gradient_end">#C8E6C9</color>
+    <color name="gray_text">#757575</color>
+    <color name="light_gray">#F5F5F5</color>
+    <color name="soft_gray">#F5F5F5</color>
+    <color name="earth_green">#2E5E3E</color>
+    <color name="white">#FFFFFF</color>
+    <color name="neutral_white">#FFFFFF</color>
+</resources>

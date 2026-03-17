@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">Grain Check</string>
+    <string name="title_home">Home</string>
+    <string name="title_inbox">Inbox</string>
+    <string name="title_scan">Scan</string>
+    <string name="title_calculator">Calculator</string>
+    <string name="title_profile">Profile</string>
+
+    <string name="login_title">Login</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="dont_have_account">Don\'t have an account? Click here</string>
+
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="terms_conditions">By signing up you agree to our terms and conditions</string>
+
+    <string name="add_picture">Add Picture</string>
+    <string name="quality">Quality</string>
+    <string name="base_price">Based Price</string>
+    <string name="quantity">Quantity</string>
+    <string name="submit">Submit</string>
+
+    <string name="price_sold">Price Sold</string>
+    <string name="entity_fee">Entity Fee</string>
+    <string name="price_paid">Price Paid</string>
+    <string name="net_profit">Net Profit</string>
+    <string name="calculate">Calculate</string>
+
+    <string name="search">Search&#8230;</string>
+    <string name="mark_all_read">Mark all as read</string>
+
+    <string name="grain_check">Grain Check</string>
+
+    <string name="msg_update_title">System Update</string>
+    <string name="msg_update_desc">Your grain analysis is complete and ready.</string>
+    <string name="msg_time_example">10:30 AM</string>
+
+    <string name="user_description">Farmer / Grain Buyer based in Bataan. Dedicated to high-quality crop production.</string>
+    <string name="user_posts">User Posts</string>
+    <string name="user_history">User History</string>
+
+    <string name="weather_time_12">12:00</string>
+    <string name="weather_temp_31">31°C</string>
+    <string name="weather_wind_5">5 km/h</string>
+
+    <!-- Legacy / Compatibility / Missing Strings -->
+    <string name="price_report">Price Report</string>
+    <string name="automated_scan_results">Automated Scan Results</string>
+    <string name="quality_grade">Quality Grade</string>
+    <string name="grade_a">Grade A</string>
+    <string name="moisture_content">Moisture Content</string>
+    <string name="moisture_value">14.2%</string>
+    <string name="unit">Unit</string>
+    <string name="variety">Variety</string>
+    <string name="total_expenses">Total Expenses</string>
+    <string name="predicted_profit_margin">Predicted Profit Margin</string>
+    <string name="profit_value">₱4,280.50</string>
+    <string name="roi_text">18.5% ROI per harvest</string>
+
+    <string name="grain_quality_details">Grain Quality Details</string>
+    <string name="total_quantity">Total Quantity</string>
+    <string name="capital_invested">Capital Invested</string>
+    <string name="remarks">Remarks</string>
+    <string name="remarks_example">Excellent quality harvest from the north field. Moisture levels were optimal during collection.</string>
+    <string name="detail_capital_value">₱5,000</string>
+    <string name="detail_profit_value">₱1,250</string>
+    <string name="logbook">Logbook</string>
+</resources>
