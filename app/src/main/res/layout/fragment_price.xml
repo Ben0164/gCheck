@@ -1,135 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pure_white"
+    android:background="@color/background"
     android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:orientation="vertical"
+        android:padding="@dimen/grid_2">
 
-        <ImageButton
-            android:id="@+id/btn_back"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_revert"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/charcoal"
-            android:contentDescription="Back" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_profit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="@color/on_surface"
+            app:title="@string/profit_screen_title"
+            app:titleTextAppearance="@style/TextAppearance.GrainCheck.Title"
+            app:titleTextColor="@color/on_surface" />
 
         <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/title_calculator"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
-            android:textColor="@color/dark_gray_text"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/btn_back"
-            app:layout_constraintStart_toEndOf="@id/btn_back"
-            app:layout_constraintTop_toTopOf="@id/btn_back" />
+            android:layout_marginTop="@dimen/grid_1"
+            android:text="@string/profit_screen_subtitle"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/on_surface_variant" />
 
+        <!-- Net result hero -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_total_profit"
             style="@style/Widget.GrainCheck.Card"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@color/mint_green"
-            app:layout_constraintTop_toBottomOf="@id/btn_back">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_3"
+            app:cardBackgroundColor="@color/profit_positive_bg"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/grid_3">
 
                 <TextView
+                    android:id="@+id/tv_net_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/net_profit"
+                    android:letterSpacing="0.05"
+                    android:text="@string/net_profit_label"
+                    android:textAllCaps="true"
                     android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                    android:textColor="@color/charcoal" />
+                    android:textColor="@color/profit_positive"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_result_profit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/grid_1"
                     android:text="₱ 0.00"
-                    android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
-                    android:textColor="@color/charcoal"
-                    android:textStyle="bold" />
+                    android:textAppearance="@style/TextAppearance.Material3.DisplaySmall"
+                    android:textColor="@color/profit_positive"
+                    android:textStyle="bold"
+                    tools:text="₱ 12,450.00" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/grid_1"
+                    android:gravity="center"
+                    android:text="Revenue − fees − costs"
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                    android:textColor="@color/on_surface_variant" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_price_sold"
-            style="@style/Widget.GrainCheck.TextInputLayout"
+        <!-- Inputs -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_3"
+            android:text="@string/profit_breakdown"
+            android:textAppearance="@style/TextAppearance.GrainCheck.Section" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.GrainCheck.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:hint="@string/price_sold"
-            app:layout_constraintTop_toBottomOf="@id/card_total_profit">
+            android:layout_marginTop="@dimen/grid_2">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_price_sold"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_input_gray"
-                android:inputType="numberDecimal"
-                android:padding="16dp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical"
+                android:padding="@dimen/grid_2">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_entity_fee"
-            style="@style/Widget.GrainCheck.TextInputLayout"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_price_sold"
+                    style="@style/Widget.GrainCheck.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/price_sold"
+                    app:startIconDrawable="@drawable/ic_calc"
+                    app:startIconTint="@color/on_surface_variant">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_price_sold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_entity_fee"
+                    style="@style/Widget.GrainCheck.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/grid_2"
+                    android:hint="@string/entity_fee"
+                    app:startIconDrawable="@drawable/ic_chart"
+                    app:startIconTint="@color/on_surface_variant">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_entity_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_price_paid"
+                    style="@style/Widget.GrainCheck.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/grid_2"
+                    android:hint="@string/price_paid"
+                    app:startIconDrawable="@drawable/ic_lock"
+                    app:startIconTint="@color/on_surface_variant">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_price_paid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/entity_fee"
-            app:layout_constraintTop_toBottomOf="@id/til_price_sold">
+            android:layout_marginTop="@dimen/grid_3"
+            android:layout_marginBottom="@dimen/grid_2">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_entity_fee"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_calculate"
+                style="@style/Widget.GrainCheck.Button.Primary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_input_gray"
-                android:inputType="numberDecimal"
-                android:padding="16dp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text="@string/calculate" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_price_paid"
-            style="@style/Widget.GrainCheck.TextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/price_paid"
-            app:layout_constraintTop_toBottomOf="@id/til_entity_fee">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_price_paid"
-                android:layout_width="match_parent"
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progress_calculate"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_input_gray"
-                android:inputType="numberDecimal"
-                android:padding="16dp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_calculate"
-            style="@style/Widget.GrainCheck.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/calculate"
-            app:layout_constraintTop_toBottomOf="@id/til_price_paid" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:indeterminate="true"
+                app:indicatorColor="@color/on_primary"
+                app:trackColor="@color/primary_dark" />
+        </FrameLayout>
+    </LinearLayout>
 </androidx.core.widget.NestedScrollView>

@@ -26,6 +26,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PostModel post = posts.get(position);
+        holder.tvAuthor.setText(post.getAuthorName());
         holder.tvTitle.setText(post.getTitle());
         holder.tvDesc.setText(post.getDescription());
         holder.tvDate.setText(post.getDate());
@@ -37,10 +38,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle, tvDesc, tvDate;
+        TextView tvAuthor, tvTitle, tvDesc, tvDate;
 
         ViewHolder(View itemView) {
             super(itemView);
+            tvAuthor = itemView.findViewById(R.id.tv_post_author);
             tvTitle = itemView.findViewById(R.id.tv_post_title);
             tvDesc = itemView.findViewById(R.id.tv_post_desc);
             tvDate = itemView.findViewById(R.id.tv_post_date);

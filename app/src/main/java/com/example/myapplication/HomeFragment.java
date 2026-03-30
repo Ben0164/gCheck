@@ -23,6 +23,7 @@ public class HomeFragment extends Fragment {
         MaterialCardView cardCalculator = view.findViewById(R.id.card_calculator);
         MaterialCardView cardInbox = view.findViewById(R.id.card_inbox);
         MaterialCardView cardMap = view.findViewById(R.id.card_map);
+        MaterialCardView cardOpenInspector = view.findViewById(R.id.card_open_inspector);
 
         if (cardCalculator != null) {
             cardCalculator.setOnClickListener(v -> openFragment(new PriceFragment(), R.id.navigation_calculator));
@@ -37,8 +38,10 @@ public class HomeFragment extends Fragment {
                 }
             });
         }
+        if (cardOpenInspector != null) {
+            cardOpenInspector.setOnClickListener(v -> openFragment(new GrainCheckFragment(), R.id.navigation_scan));
+        }
 
-        // Setup Recent Posts RecyclerView
         RecyclerView rvHomePosts = view.findViewById(R.id.rv_home_posts);
         rvHomePosts.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new PostAdapter(PostRepository.getAllPosts());

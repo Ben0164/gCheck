@@ -1,127 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pure_white"
-    android:padding="16dp">
+    android:background="@color/background"
+    android:fillViewport="true">
 
-    <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@android:drawable/ic_menu_revert"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/charcoal"
-        android:contentDescription="Back" />
-
-    <TextView
-        android:id="@+id/tv_description"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Upload a clear photo of your grain to analyze quality."
-        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-        android:textColor="@color/gray_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_back" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_upload"
-        style="@style/Widget.GrainCheck.Card"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="24dp"
-        app:cardBackgroundColor="@color/pale_mint"
-        app:layout_constraintTop_toBottomOf="@id/tv_description">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/grid_2">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_grain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="@color/on_surface"
+            app:title="@string/grain_check_screen_title"
+            app:titleTextAppearance="@style/TextAppearance.GrainCheck.Title"
+            app:titleTextColor="@color/on_surface" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_1"
+            android:text="@string/grain_check_screen_subtitle"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/on_surface_variant" />
+
+        <!-- Image upload -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_3"
+            android:text="@string/section_image_upload"
+            android:textAppearance="@style/TextAppearance.GrainCheck.Section" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_upload"
+            style="@style/Widget.GrainCheck.Card"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginTop="@dimen/grid_2"
+            android:clickable="true"
+            android:focusable="true"
+            app:strokeColor="@color/outline"
+            app:strokeWidth="1dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/surface_variant">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/grid_2">
+
+                    <ImageView
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:contentDescription="@string/add_picture"
+                        android:src="@drawable/ic_scan"
+                        app:tint="@color/primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/grid_2"
+                        android:text="@string/add_picture"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        android:textColor="@color/on_surface" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="PNG or JPG · well lit · grain in frame"
+                        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                        android:textColor="@color/on_surface_variant" />
+                </LinearLayout>
+
+            </FrameLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Grain quality inputs -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_3"
+            android:text="@string/section_grain_quality"
+            android:textAppearance="@style/TextAppearance.GrainCheck.Section" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_2"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/ic_scan"
-                app:tint="@color/mint_green"
-                android:contentDescription="Scan Icon" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_quality"
+                style="@style/Widget.GrainCheck.TextInputLayout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/add_picture"
-                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-                android:textColor="@color/charcoal" />
+                android:layout_marginEnd="@dimen/grid_1"
+                android:layout_weight="1"
+                android:hint="@string/quality"
+                app:startIconDrawable="@drawable/ic_grain"
+                app:startIconTint="@color/on_surface_variant">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_quality"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_base_price"
+                style="@style/Widget.GrainCheck.TextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_1"
+                android:layout_weight="1"
+                android:hint="@string/base_price"
+                app:startIconDrawable="@drawable/ic_calc"
+                app:startIconTint="@color/on_surface_variant">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_base_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <LinearLayout
-        android:id="@+id/layout_inputs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/card_upload">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="0dp"
+            android:id="@+id/til_quantity"
+            style="@style/Widget.GrainCheck.TextInputLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:hint="@string/quality"
-            style="@style/Widget.GrainCheck.TextInputLayout">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_input_gray"
-                android:padding="16dp" />
-        </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="@dimen/grid_2"
+            android:hint="@string/quantity"
+            app:startIconDrawable="@drawable/ic_chart"
+            app:startIconTint="@color/on_surface_variant">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:hint="@string/base_price"
-            style="@style/Widget.GrainCheck.TextInputLayout">
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:background="@drawable/bg_input_gray"
-                android:padding="16dp" />
+                android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_quantity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="@string/quantity"
-        style="@style/Widget.GrainCheck.TextInputLayout"
-        app:layout_constraintTop_toBottomOf="@id/layout_inputs">
-        <com.google.android.material.textfield.TextInputEditText
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:background="@drawable/bg_input_gray"
-            android:padding="16dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="@dimen/grid_3">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_submit"
-        style="@style/Widget.GrainCheck.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/submit"
-        app:layout_constraintTop_toBottomOf="@id/til_quantity" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_submit"
+                style="@style/Widget.GrainCheck.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/submit" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progress_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:indeterminate="true"
+                app:indicatorColor="@color/on_primary"
+                app:trackColor="@color/primary_dark" />
+        </FrameLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

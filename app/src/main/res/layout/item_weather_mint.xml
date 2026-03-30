@@ -5,22 +5,23 @@
     android:layout_height="wrap_content"
     android:layout_weight="1"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="4dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/weather_time_12"
         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-        android:textColor="@color/charcoal" />
+        android:textColor="@color/on_surface_variant" />
 
     <ImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:layout_marginTop="4dp"
-        android:src="@android:drawable/ic_menu_report_image"
-        android:contentDescription="Weather Icon"
-        app:tint="@color/mint_green" />
+        android:contentDescription="@string/section_weather"
+        android:src="@drawable/ic_cloud"
+        app:tint="@color/primary" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,6 +29,6 @@
         android:layout_marginTop="4dp"
         android:text="@string/weather_temp_31"
         android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:textColor="@color/on_surface"
         android:textStyle="bold" />
-
 </LinearLayout>

@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputEditText;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,7 +32,6 @@ public class ChatMessageFragment extends Fragment {
         rvChat = view.findViewById(R.id.rv_chat);
         etInput = view.findViewById(R.id.et_chat_input);
         View btnSend = view.findViewById(R.id.btn_chat_send);
-        View btnBack = view.findViewById(R.id.toolbar_chat);
 
         messages = new ArrayList<>();
         messages.add(new ChatMessageModel("Hello! How is the grain quality today?", false, "10:00 AM"));
@@ -45,14 +45,9 @@ public class ChatMessageFragment extends Fragment {
 
         btnSend.setOnClickListener(v -> sendMessage());
 
-        view.findViewById(R.id.toolbar_chat).setOnClickListener(v -> {
-             // Handle back navigation or toolbar clicks
-        });
-        
-        // Setup Toolbar back button logic
-        com.google.android.material.appbar.MaterialToolbar toolbar = view.findViewById(R.id.toolbar_chat);
+        MaterialToolbar toolbar = view.findViewById(R.id.toolbar_chat);
         toolbar.setNavigationOnClickListener(v -> {
-            if (getActivity() != null) {
+            if (getActivity() instanceof MainActivity) {
                 ((MainActivity) getActivity()).loadFragment(new InboxFragment());
             }
         });
@@ -61,7 +56,10 @@ public class ChatMessageFragment extends Fragment {
     }
 
     private void sendMessage() {
-        String text = etInput.getText().toString().trim();
+        if (etInput == null) {
+            return;
+        }
+        String text = etInput.getText() != null ? etInput.getText().toString().trim() : "";
         if (!text.isEmpty()) {
             String currentTime = new SimpleDateFormat("hh:mm a", Locale.getDefault()).format(new Date());
             messages.add(new ChatMessageModel(text, true, currentTime));

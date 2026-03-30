@@ -16,13 +16,13 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        View btnEditAvatar = view.findViewById(R.id.btn_edit_avatar);
+        View btnEditProfile = view.findViewById(R.id.btn_edit_profile);
         MaterialButton btnViewPosts = view.findViewById(R.id.btn_view_posts);
         MaterialButton btnViewHistory = view.findViewById(R.id.btn_view_history);
         MaterialCardView cardSignOut = view.findViewById(R.id.card_sign_out);
 
-        if (btnEditAvatar != null) {
-            btnEditAvatar.setOnClickListener(v -> openFragment(new EditProfileFragment()));
+        if (btnEditProfile != null) {
+            btnEditProfile.setOnClickListener(v -> openFragment(new EditProfileFragment()));
         }
 
         if (btnViewPosts != null) {

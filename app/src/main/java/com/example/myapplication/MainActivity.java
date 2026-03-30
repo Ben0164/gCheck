@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -44,11 +45,8 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
-        fabScan.setOnClickListener(v -> {
-            bottomNav.setSelectedItemId(R.id.navigation_scan);
-        });
+        fabScan.setOnClickListener(v -> bottomNav.setSelectedItemId(R.id.navigation_scan));
 
-        // Start with Login screen
         if (savedInstanceState == null) {
             loadFragment(new LoginFragment());
             setNavigationVisibility(false);
@@ -56,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .commit();
-        
-        // Show/Hide bottom nav and FAB based on fragment
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out);
+        ft.replace(R.id.fragment_container, fragment);
+        ft.commit();
+
         if (fragment instanceof LoginFragment || fragment instanceof SignupFragment) {
             setNavigationVisibility(false);
         } else {
@@ -72,9 +70,8 @@ public class MainActivity extends AppCompatActivity {
         int visibility = visible ? View.VISIBLE : View.GONE;
         bottomAppBar.setVisibility(visibility);
         fabScan.setVisibility(visibility);
-        // Also adjust fragment container margin if needed, but for now just hide.
     }
-    
+
     public void setBottomNavSelection(int itemId) {
         bottomNav.setSelectedItemId(itemId);
     }

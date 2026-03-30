@@ -2,32 +2,56 @@
     <string name="app_name">Grain Check</string>
     <string name="title_home">Home</string>
     <string name="title_inbox">Inbox</string>
-    <string name="title_scan">Scan</string>
-    <string name="title_calculator">Calculator</string>
+    <string name="title_scan">Inspect</string>
+    <string name="title_calculator">Profit</string>
     <string name="title_profile">Profile</string>
 
-    <string name="login_title">Login</string>
+    <string name="home_subtitle">Quality inspection &amp; profit insights</string>
+    <string name="section_weather">Weather</string>
+    <string name="section_grain_quality">Grain quality</string>
+    <string name="section_image_upload">Image upload</string>
+    <string name="section_statistics">Statistics</string>
+    <string name="section_quick_actions">Quick actions</string>
+    <string name="section_recent_activity">Recent activity</string>
+    <string name="grain_upload_cta_title">Capture or upload grain</string>
+    <string name="grain_upload_cta_body">Get a clear photo for moisture and grade estimates.</string>
+    <string name="stat_inspections">Inspections</string>
+    <string name="stat_avg_grade">Avg. grade</string>
+    <string name="stat_yield">Est. yield</string>
+    <string name="open_inspector">Open inspector</string>
+
+    <string name="login_title">Welcome back</string>
+    <string name="login_heading">Sign in</string>
+    <string name="sign_in">Sign in</string>
+    <string name="login_email_label">Email</string>
     <string name="password">Password</string>
     <string name="forgot_password">Forgot password?</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="dont_have_account">Don\'t have an account? Click here</string>
+    <string name="sign_up">Create account</string>
+    <string name="dont_have_account">New here? Create an account</string>
 
-    <string name="name">Name</string>
+    <string name="name">Full name</string>
     <string name="email">Email</string>
-    <string name="confirm_password">Confirm Password</string>
-    <string name="terms_conditions">By signing up you agree to our terms and conditions</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="terms_conditions">By signing up you agree to our terms and privacy policy.</string>
 
-    <string name="add_picture">Add Picture</string>
-    <string name="quality">Quality</string>
-    <string name="base_price">Based Price</string>
-    <string name="quantity">Quantity</string>
-    <string name="submit">Submit</string>
+    <string name="add_picture">Tap to add photo</string>
+    <string name="quality">Quality grade</string>
+    <string name="base_price">Base price (₱)</string>
+    <string name="quantity">Quantity (kg)</string>
+    <string name="submit">Submit inspection</string>
+    <string name="grain_check_screen_title">Grain inspection</string>
+    <string name="grain_check_screen_subtitle">Upload a clear photo and enter batch details. We’ll validate before submission.</string>
 
-    <string name="price_sold">Price Sold</string>
-    <string name="entity_fee">Entity Fee</string>
-    <string name="price_paid">Price Paid</string>
-    <string name="net_profit">Net Profit</string>
-    <string name="calculate">Calculate</string>
+    <string name="price_sold">Revenue (price sold)</string>
+    <string name="entity_fee">Fees &amp; charges</string>
+    <string name="price_paid">Costs (price paid)</string>
+    <string name="net_profit">Net result</string>
+    <string name="net_profit_label">Net profit</string>
+    <string name="net_loss_label">Net loss</string>
+    <string name="profit_breakdown">Breakdown</string>
+    <string name="calculate">Calculate profit</string>
+    <string name="profit_screen_title">Profit calculator</string>
+    <string name="profit_screen_subtitle">Enter amounts in Philippine peso (₱).</string>
 
     <string name="search">Search&#8230;</string>
     <string name="mark_all_read">Mark all as read</string>
@@ -41,12 +65,16 @@
     <string name="user_description">Farmer / Grain Buyer based in Bataan. Dedicated to high-quality crop production.</string>
     <string name="user_posts">User Posts</string>
     <string name="user_history">User History</string>
+    <string name="profile_edit">Edit profile</string>
+    <string name="profile_logout">Log out</string>
+    <string name="profile_account">Account</string>
+    <string name="profile_role_label">Role</string>
+    <string name="profile_email_label">Email</string>
 
     <string name="weather_time_12">12:00</string>
     <string name="weather_temp_31">31°C</string>
     <string name="weather_wind_5">5 km/h</string>
 
-    <!-- Legacy / Compatibility / Missing Strings -->
     <string name="price_report">Price Report</string>
     <string name="automated_scan_results">Automated Scan Results</string>
     <string name="quality_grade">Quality Grade</string>
@@ -68,4 +96,9 @@
     <string name="detail_capital_value">₱5,000</string>
     <string name="detail_profit_value">₱1,250</string>
     <string name="logbook">Logbook</string>
+
+    <string name="password_mismatch">Passwords do not match</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_invalid_number">Enter a valid number</string>
+    <string name="loading_processing">Processing…</string>
 </resources>

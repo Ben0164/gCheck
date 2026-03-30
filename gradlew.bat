@@ -38,6 +38,20 @@ for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
 @rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
 set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
 
+@rem Android Gradle Plugin needs a full JDK (jlink). If JAVA_HOME points at a minimal JRE (e.g. from an IDE extension),
+@rem prefer Android Studio's bundled JBR when it exists.
+set "_AS_JBR=%ProgramFiles%\Android\Android Studio\jbr"
+if exist "%_AS_JBR%\bin\jlink.exe" (
+  if not defined JAVA_HOME (
+    set "JAVA_HOME=%_AS_JBR%"
+  ) else (
+    if not exist "%JAVA_HOME%\bin\jlink.exe" (
+      set "JAVA_HOME=%_AS_JBR%"
+    )
+  )
+)
+set "_AS_JBR="
+
 @rem Find java.exe
 if defined JAVA_HOME goto findJavaFromJavaHome
 

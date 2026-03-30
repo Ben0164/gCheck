@@ -4,21 +4,21 @@
     style="@style/Widget.GrainCheck.Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="@dimen/grid_2">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/grid_2">
 
         <TextView
             android:id="@+id/tv_post_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Author Name"
-            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-            android:textColor="@color/soft_green_dark"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+            android:textColor="@color/primary"
             android:textStyle="bold" />
 
         <TextView
@@ -28,7 +28,7 @@
             android:layout_marginTop="4dp"
             android:text="Post Title"
             android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-            android:textColor="@color/dark_gray_text"
+            android:textColor="@color/on_surface"
             android:textStyle="bold" />
 
         <TextView
@@ -38,17 +38,16 @@
             android:layout_marginTop="4dp"
             android:text="Post description goes here..."
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="@color/charcoal" />
+            android:textColor="@color/on_surface_variant" />
 
         <TextView
             android:id="@+id/tv_post_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/grid_2"
             android:text="2023-10-25"
             android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-            android:textColor="@color/gray_text" />
-
+            android:textColor="@color/on_surface_variant" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
