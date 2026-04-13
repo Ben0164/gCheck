@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.feature.profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
+import com.example.myapplication.R;
 import com.example.myapplication.core.data.entity.UserEntity;
 import com.example.myapplication.palay.data.repository.SessionManager;
 import com.google.android.material.button.MaterialButton;
@@ -34,9 +35,7 @@ public class ProfileFragment extends Fragment {
         MaterialButton btnEdit = view.findViewById(R.id.btn_edit_profile);
         if (btnEdit != null) {
             btnEdit.setOnClickListener(v -> {
-                if (getActivity() instanceof MainActivity) {
-                    ((MainActivity) getActivity()).loadFragment(new EditProfileFragment());
-                }
+                // Navigation will be handled by the hosting activity or via a shared interface
             });
         }
 
@@ -44,7 +43,6 @@ public class ProfileFragment extends Fragment {
     }
 
     private void initViews(View v) {
-        // Updated to match fragment_profile.xml source of truth
         tvProfileName = v.findViewById(R.id.tv_profile_name);
         tvUsername = v.findViewById(R.id.tv_profile_username);
         tvBio = v.findViewById(R.id.tv_profile_bio);

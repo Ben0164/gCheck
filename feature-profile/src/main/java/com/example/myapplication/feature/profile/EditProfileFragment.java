@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.feature.profile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.R;
 import com.example.myapplication.core.data.db.AppDatabase;
 import com.example.myapplication.core.data.entity.UserEntity;
 import com.example.myapplication.palay.data.repository.SessionManager;

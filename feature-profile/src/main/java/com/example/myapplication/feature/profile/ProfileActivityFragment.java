@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.feature.profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.R;
 import com.example.myapplication.core.data.db.AppDatabase;
 import com.example.myapplication.palay.data.repository.SessionManager;
 
@@ -37,14 +38,10 @@ public class ProfileActivityFragment extends Fragment {
 
     private void setupRecyclerView() {
         rvActivity.setLayoutManager(new LinearLayoutManager(requireContext()));
-        // Assuming there's an adapter for activities, if not, we might need to create one or use a placeholder
-        // For now, let's keep it simple.
     }
 
     private void loadData() {
         if (SessionManager.getCurrentUser() == null) return;
-        
-        // Load some activity data here
         tvEmpty.setVisibility(View.VISIBLE);
     }
 }

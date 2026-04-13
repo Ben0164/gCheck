@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.feature.profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.R;
+import com.example.myapplication.core.data.db.AppDatabase;
 import com.example.myapplication.palay.data.repository.SessionManager;
 import java.util.Locale;
 
@@ -38,7 +40,6 @@ public class ProfileAnalyticsFragment extends Fragment {
         if (SessionManager.getCurrentUser() == null) return;
         
         // Mocking financial data for demo purposes
-        // In a real app, you would sum up expenses and sales from Room
         double profit = 42500.00;
         double revenue = 124500.00;
         double expenses = 82000.00;
