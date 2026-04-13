@@ -1,25 +1,39 @@
 package com.example.myapplication;
 
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.myapplication.core.data.entity.BatchEntity;
+import com.example.myapplication.palay.data.PhaseCalculator;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class LogbookAdapter extends RecyclerView.Adapter<LogbookAdapter.ViewHolder> {
 
-    private List<HarvestRecord> records;
+    private List<BatchEntity> batches = new ArrayList<>();
     private OnItemClickListener listener;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
 
     public interface OnItemClickListener {
-        void onItemClick(HarvestRecord record);
+        void onItemClick(BatchEntity batch);
     }
 
-    public LogbookAdapter(List<HarvestRecord> records, OnItemClickListener listener) {
-        this.records = records;
+    public LogbookAdapter(OnItemClickListener listener) {
         this.listener = listener;
+    }
+
+    public void setBatches(List<BatchEntity> batches) {
+        this.batches = batches;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -31,21 +45,45 @@ public class LogbookAdapter extends RecyclerView.Adapter<LogbookAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        HarvestRecord record = records.get(position);
-        holder.tvTitle.setText(record.getTitle());
-        holder.tvSubtitle.setText(record.getSubtitle());
-        holder.tvDate.setText(record.getDate());
-        holder.tvProfit.setText(record.getProfit());
-        holder.itemView.setOnClickListener(v -> listener.onItemClick(record));
+        BatchEntity batch = batches.get(position);
+        
+        holder.tvTitle.setText(batch.getName());
+        
+        String phase;
+        if (batch.isCompleted()) {
+            phase = "Completed";
+            holder.tvStatusBadge.setText("DONE");
+            updateBadgeColor(holder.tvStatusBadge, "#4CAF50"); // Green
+        } else {
+            if (batch.isManualOverride()) {
+                phase = batch.getManualPhase();
+            } else {
+                PhaseCalculator.PhaseResult result = PhaseCalculator.calculatePhase(batch.getStartDate(), System.currentTimeMillis());
+                phase = result.phaseName;
+            }
+            holder.tvStatusBadge.setText("IN PROGRESS");
+            updateBadgeColor(holder.tvStatusBadge, "#FF9800"); // Orange
+        }
+        
+        holder.tvSubtitle.setText("Phase: " + phase);
+        holder.tvDate.setText("Started: " + dateFormat.format(new Date(batch.getStartDate())));
+        holder.tvProfit.setText("Target: " + String.format(Locale.getDefault(), "%.0f kg", batch.getTargetYield()));
+        
+        holder.itemView.setOnClickListener(v -> listener.onItemClick(batch));
+    }
+
+    private void updateBadgeColor(TextView view, String colorCode) {
+        GradientDrawable drawable = (GradientDrawable) view.getBackground();
+        drawable.setColor(Color.parseColor(colorCode));
     }
 
     @Override
     public int getItemCount() {
-        return records.size();
+        return batches.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle, tvSubtitle, tvDate, tvProfit;
+        TextView tvTitle, tvSubtitle, tvDate, tvProfit, tvStatusBadge;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -53,6 +91,7 @@ public class LogbookAdapter extends RecyclerView.Adapter<LogbookAdapter.ViewHold
             tvSubtitle = itemView.findViewById(R.id.tv_subtitle);
             tvDate = itemView.findViewById(R.id.tv_date);
             tvProfit = itemView.findViewById(R.id.tv_profit);
+            tvStatusBadge = itemView.findViewById(R.id.tv_status_badge);
         }
     }
 }

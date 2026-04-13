@@ -101,4 +101,8 @@
     <style name="ShapeAppearance.GrainCheck.FAB" parent="ShapeAppearance.Material3.Corner.Full">
         <item name="cornerSize">28dp</item>
     </style>
+
+    <style name="CustomAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 </resources>

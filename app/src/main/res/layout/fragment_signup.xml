@@ -37,30 +37,13 @@
                 android:textColor="@color/on_surface_variant" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_signup_name"
-                style="@style/Widget.GrainCheck.TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/grid_3"
-                android:hint="@string/name"
-                app:startIconDrawable="@drawable/ic_person"
-                app:startIconTint="@color/on_surface_variant">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_signup_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_signup_email"
                 style="@style/Widget.GrainCheck.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/grid_2"
+                android:layout_marginTop="@dimen/grid_3"
                 android:hint="@string/email"
+                app:errorEnabled="true"
                 app:startIconDrawable="@drawable/ic_email"
                 app:startIconTint="@color/on_surface_variant">
 
@@ -80,6 +63,8 @@
                 android:layout_marginTop="@dimen/grid_2"
                 android:hint="@string/password"
                 app:endIconMode="password_toggle"
+                app:errorEnabled="true"
+                app:passwordToggleDrawable="@drawable/password_visibility_selector"
                 app:startIconDrawable="@drawable/ic_lock"
                 app:startIconTint="@color/on_surface_variant">
 
@@ -99,6 +84,8 @@
                 android:layout_marginTop="@dimen/grid_2"
                 android:hint="@string/confirm_password"
                 app:endIconMode="password_toggle"
+                app:errorEnabled="true"
+                app:passwordToggleDrawable="@drawable/password_visibility_selector"
                 app:startIconDrawable="@drawable/ic_lock"
                 app:startIconTint="@color/on_surface_variant">
 
@@ -111,6 +98,37 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_2"
+                android:text="@string/role"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textColor="@color/on_surface" />
+
+            <RadioGroup
+                android:id="@+id/rg_role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_1"
+                android:orientation="horizontal">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_farmer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/role_farmer" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_buyer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/role_buyer" />
+            </RadioGroup>
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/grid_2"
@@ -119,13 +137,28 @@
                 android:textAppearance="@style/TextAppearance.Material3.BodySmall"
                 android:textColor="@color/on_surface_variant" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_signup"
-                style="@style/Widget.GrainCheck.Button.Primary"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/grid_3"
-                android:text="@string/sign_up" />
+                android:layout_marginTop="@dimen/grid_3">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_signup"
+                    style="@style/Widget.GrainCheck.Button.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sign_up" />
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progress_signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:indeterminate="true"
+                    app:indicatorColor="@color/on_primary"
+                    app:trackColor="@color/primary_dark" />
+            </FrameLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_switch_to_login"

@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Grain Check</string>
     <string name="title_home">Home</string>
-    <string name="title_inbox">Inbox</string>
+    <string name="title_market">Market</string>
     <string name="title_scan">Inspect</string>
-    <string name="title_calculator">Profit</string>
+    <string name="title_chat">Inbox</string>
     <string name="title_profile">Profile</string>
 
     <string name="home_subtitle">Quality inspection &amp; profit insights</string>
@@ -31,6 +31,9 @@
 
     <string name="name">Full name</string>
     <string name="email">Email</string>
+    <string name="role">Role</string>
+    <string name="role_farmer">Farmer</string>
+    <string name="role_buyer">Buyer</string>
     <string name="confirm_password">Confirm password</string>
     <string name="terms_conditions">By signing up you agree to our terms and privacy policy.</string>
 
@@ -52,6 +55,32 @@
     <string name="calculate">Calculate profit</string>
     <string name="profit_screen_title">Profit calculator</string>
     <string name="profit_screen_subtitle">Enter amounts in Philippine peso (₱).</string>
+
+    <!-- Palay analysis (mock AI) -->
+    <string name="analyze_palay_title">Analyze Palay</string>
+    <string name="analyze_palay_subtitle">Enter moisture content to simulate AI quality assessment.</string>
+    <string name="moisture_input_hint">Moisture (%)</string>
+    <string name="analyze">Analyze</string>
+    <string name="analysis_result_title">Analysis Result</string>
+    <string name="analysis_result_subtitle">Mock grading based on your moisture input.</string>
+    <string name="good_percentage">Good %</string>
+    <string name="bad_percentage">Bad %</string>
+    <string name="grade_label">Grade</string>
+    <string name="price_label">Estimated Price</string>
+    <string name="post_product_title">Post Product</string>
+    <string name="post_product_subtitle">Create a listing from your latest analysis.</string>
+    <string name="marketplace_title">Marketplace</string>
+    <string name="marketplace_subtitle">Browse listings and place bids.</string>
+    <string name="highest_bid">Highest Bid</string>
+    <string name="place_bid">Place Bid</string>
+    <string name="no_bid_yet">No bids yet</string>
+    <string name="quantity_hint">Quantity (kg)</string>
+    <string name="submit_listing">Post Listing</string>
+    <string name="latest_analysis_missing">Analyze first before posting a product.</string>
+    <string name="role_farmer_only">Only farmers can post products.</string>
+    <string name="role_buyer_only">Only buyers can place bids.</string>
+    <string name="bid_amount_hint">Bid Amount (₱)</string>
+    <string name="save_bid">Save Bid</string>
 
     <string name="search">Search&#8230;</string>
     <string name="mark_all_read">Mark all as read</string>
@@ -100,5 +129,96 @@
     <string name="password_mismatch">Passwords do not match</string>
     <string name="error_field_required">This field is required</string>
     <string name="error_invalid_number">Enter a valid number</string>
+    <string name="error_invalid_email">Enter a valid email address</string>
+    <string name="error_password_min">Password must be at least 6 characters</string>
+    <string name="login_success">Login successful</string>
+    <string name="signup_success">Signup successful</string>
     <string name="loading_processing">Processing…</string>
+
+    <string name="title_inbox">Inbox</string>
+
+    <!-- Expense Tracking Strings -->
+    <string name="new_expense">New Expense</string>
+    <string name="phase">Phase</string>
+    <string name="category">Category</string>
+    <string name="product_activity_name">Product / Activity Name</string>
+    <string name="qty">Qty</string>
+    <string name="unit_hint">Unit (e.g. bag)</string>
+    <string name="unit_price_label">Unit Price (₱)</string>
+    <string name="save_expense">Save Expense</string>
+    <string name="total_cost_label">Total: ₱%1$.2f</string>
+
+    <!-- Refactoring Strings -->
+    <string name="currency_format">₱%,.2f</string>
+    <string name="currency_per_kg_format">₱%,.2f/kg</string>
+    <string name="weight_kg_format">%.0f kg</string>
+    <string name="total_economic_cost">Total Economic Cost</string>
+    <string name="cash_cost_explicit">Cash Cost (Explicit Only)</string>
+    <string name="production_cost_label">Production Cost: ₱%,.2f</string>
+    <string name="internal_transport_label">Internal Transport: ₱%,.2f</string>
+    <string name="transport_to_buyer_label">Transport to Buyer: ₱%,.2f</string>
+    <string name="total_cost_all_label">Total Cost: ₱%,.2f</string>
+    <string name="breakeven_warning">⚠ Selling below breakeven</string>
+    <string name="profitable_price">✔ Profitable price</string>
+    <string name="error_select_batch">Select a batch to see accurate profit</string>
+    <string name="error_invalid_yield">Invalid or missing yield data</string>
+
+    <!-- Phase Tags -->
+    <string name="phase_land_prep">Land Preparation</string>
+    <string name="phase_crop_est">Crop Establishment</string>
+    <string name="phase_crop_mgmt">Crop Management</string>
+    <string name="phase_monitoring">Reproductive/Ripening Monitoring</string>
+    <string name="phase_harvest">Harvesting</string>
+    <string name="phase_post_harvest">Post-Harvest</string>
+
+    <!-- Hybrid Phase System -->
+    <string name="current_phase_label">Current Phase: %1$s</string>
+    <string name="day_format">(Day %1$d)</string>
+    <string name="manual_override_tag">(Manual Override)</string>
+    <string name="btn_change_phase">Change Phase</string>
+    <string name="btn_use_auto">Use Automatic Phase</string>
+    <string name="dialog_select_phase">Select Manual Phase</string>
+    <string name="phase_auto_calculating">Auto calculating...</string>
+    <string name="smart_suggestion_placeholder">Smart suggestions will appear here.</string>
+
+    <!-- Marketplace Bids -->
+    <string name="bid_less_transport">Less Transport: -%1$s</string>
+    <string name="bid_net_profit">Net Profit: %1$s</string>
+    <string name="bid_distance_away">%1$.1f km away</string>
+    <string name="bid_reason_best_profit">Highest take-home pay after logistics cost</string>
+    <string name="status_loss">⚠ LOSS</string>
+    <string name="status_low_margin">⚠ LOW MARGIN</string>
+    <string name="status_profitable">✓ PROFITABLE</string>
+
+    <!-- New Strings Added -->
+    <string name="no_batch_create">No batch found? Create one now</string>
+    <string name="breakeven_hint">Min. price to avoid loss</string>
+    <string name="label_owner_labor">Include value of my labor (Owner Labor)</string>
+    <string name="est_labor_cost_label">Est. Labor Cost:</string>
+    <string name="tv_signup_link">Don\'t have an account? Sign up</string>
+    <string name="tv_login_link">Already have an account? Sign in</string>
+    <string name="status_completed">Status: Completed</string>
+    <string name="status_in_progress">Status: In Progress</string>
+    <string name="status_placeholder">Status: --</string>
+
+    <string name="transport_not_available">Transport: Not available</string>
+    <string name="awaiting_harvest_data">Awaiting harvest data</string>
+    <string name="to_be_determined">To be determined</string>
+    <string name="tap_to_enter_yield">Tap to enter yield</string>
+    <string name="yield_required_title">Yield Required</string>
+    <string name="yield_required_message">Please enter your actual yield before completing the batch.</string>
+    <string name="enter_actual_yield">Enter Actual Yield</string>
+    <string name="actual_yield_hint">Actual Yield (kg)</string>
+    <string name="yield_positive_error">Yield must be greater than 0</string>
+    <string name="end_batch_lifecycle_title">End Batch Lifecycle</string>
+    <string name="end_batch_lifecycle_message">Are you sure you want to mark this batch as Completed?</string>
+    <string name="viewing_only_completed">Viewing only - Batch is completed.</string>
+    <string name="harvest_completed_status">Harvest Completed</string>
+    <string name="dash_placeholder">—</string>
+    <string name="logbook_subtitle">Manage and monitor your crop production and profit</string>
+
+    <!-- Collaboration Feature -->
+    <string name="title_collaboration">Collaboration</string>
+    <string name="collaboration_title">Smart Collaboration (Coming Soon)</string>
+    <string name="collaboration_desc">Social-Technical Hybrid designed to help farmers improve their harvest quality and profit through peer data.</string>
 </resources>

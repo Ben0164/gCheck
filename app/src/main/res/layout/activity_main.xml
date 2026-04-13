@@ -41,14 +41,23 @@
         android:id="@+id/fab_scan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_marginBottom="20dp"
+
         android:contentDescription="@string/title_scan"
         android:src="@drawable/ic_scan"
+
         app:backgroundTint="@color/primary"
-        app:elevation="6dp"
-        app:fabCustomSize="@dimen/fab_size"
-        app:layout_anchor="@+id/bottom_app_bar"
-        app:layout_anchorGravity="top|center"
-        app:shapeAppearanceOverlay="@style/ShapeAppearance.GrainCheck.FAB"
-        app:tint="@color/on_primary" />
+        app:tint="@android:color/white"
+
+        app:fabCustomSize="70dp"
+
+        app:elevation="12dp"
+        app:pressedTranslationZ="16dp"
+
+        app:layout_anchor="@id/bottom_app_bar"
+        app:layout_anchorGravity="center"
+
+        app:useCompatPadding="true"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

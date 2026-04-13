@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
-import java.util.List;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class LogbookFragment extends Fragment {
 
@@ -22,20 +23,38 @@ public class LogbookFragment extends Fragment {
         RecyclerView rvLogbook = view.findViewById(R.id.rv_logbook);
         rvLogbook.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        List<HarvestRecord> records = new ArrayList<>();
-        records.add(new HarvestRecord("Premium Wheat Harvest", "Grade A | 500 Tons", "2023-10-25", "+₱1,250"));
-        records.add(new HarvestRecord("Jasmine Rice Batch", "Grade B | 200 Tons", "2023-09-12", "+₱850"));
-        records.add(new HarvestRecord("Corn Feed", "Grade C | 800 Tons", "2023-08-05", "+₱2,100"));
+        LogbookAdapter adapter = new LogbookAdapter(batch -> {
+            // Navigate to ExpenseFragment for this specific batch
+            ExpenseFragment expenseFragment = new ExpenseFragment();
+            Bundle args = new Bundle();
+            args.putLong("BATCH_ID", batch.getId());
+            // actualYieldKg logic is now handled inside ExpenseFragment via LiveData
+            expenseFragment.setArguments(args);
 
-        LogbookAdapter adapter = new LogbookAdapter(records, record -> {
-            // Navigate to details
-            Fragment detailsFragment = new LogbookDetailsFragment();
-            getParentFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, detailsFragment)
-                    .addToBackStack(null)
-                    .commit();
+            if (getActivity() instanceof MainActivity) {
+                ((MainActivity) getActivity()).loadFragment(expenseFragment);
+            }
         });
         rvLogbook.setAdapter(adapter);
+
+        FloatingActionButton fabAddBatch = view.findViewById(R.id.fab_add_batch);
+        fabAddBatch.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), CreateBatchActivity.class);
+            startActivity(intent);
+        });
+
+        AppDatabase db = AppDatabase.getInstance(requireContext());
+        // UI uses LiveData for reactive updates without main thread queries
+        db.batchDao().getAllBatches().observe(getViewLifecycleOwner(), batches -> {
+            if (batches != null) {
+                adapter.setBatches(batches);
+                rvLogbook.setVisibility(batches.isEmpty() ? View.GONE : View.VISIBLE);
+                View emptyView = view.findViewById(R.id.layout_empty_logbook);
+                if (emptyView != null) {
+                    emptyView.setVisibility(batches.isEmpty() ? View.VISIBLE : View.GONE);
+                }
+            }
+        });
 
         return view;
     }

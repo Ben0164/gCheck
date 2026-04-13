@@ -11,15 +11,64 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GrainCheck">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".CreateBatchActivity"
+            android:exported="false"
+            android:label="Create New Batch" />
+
+        <activity
+            android:name=".ExpensePhaseActivity"
+            android:exported="false"
+            android:label="Production Ledger" />
+
+        <!-- Removed: ActivityListActivity, MethodListActivity, ExpenseListActivity as per simplified flow -->
+
+        <activity
+            android:name=".PhaseSelectionActivity"
+            android:exported="false"
+            android:label="Production Ledger" />
+
+        <activity
+            android:name=".PhaseListActivity"
+            android:exported="false"
+            android:label="Production Ledger" />
+
+        <activity
+            android:name=".ExpenseLedgerActivity"
+            android:exported="false"
+            android:label="Cost Ledger"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".PhaseExpenseActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".CategoryActivity"
+            android:exported="false"
+            android:label="Categories" />
+
+        <activity
+            android:name=".ItemListActivity"
+            android:exported="false"
+            android:label="Items" />
+
+        <activity
+            android:name=".ExpenseFormActivity"
+            android:exported="false"
+            android:label="Expense Form"
+            android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>

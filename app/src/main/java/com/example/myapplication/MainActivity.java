@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.myapplication.palay.ui.analyze.AnalyzeFragment;
+import com.example.myapplication.palay.ui.marketplace.MarketplaceFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,14 +31,14 @@ public class MainActivity extends AppCompatActivity {
             if (itemId == R.id.navigation_home) {
                 loadFragment(new HomeFragment());
                 return true;
-            } else if (itemId == R.id.navigation_inbox) {
-                loadFragment(new InboxFragment());
+            } else if (itemId == R.id.navigation_market) {
+                loadFragment(new MarketplaceFragment());
                 return true;
             } else if (itemId == R.id.navigation_scan) {
-                loadFragment(new GrainCheckFragment());
+                loadFragment(new AnalyzeFragment());
                 return true;
-            } else if (itemId == R.id.navigation_calculator) {
-                loadFragment(new PriceFragment());
+            } else if (itemId == R.id.navigation_inbox) {
+                loadFragment(new InboxFragment());
                 return true;
             } else if (itemId == R.id.navigation_profile) {
                 loadFragment(new ProfileFragment());

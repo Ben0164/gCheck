@@ -1,53 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/Widget.GrainCheck.Card"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/grid_2">
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/outline">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/grid_2">
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/tv_post_author"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Author Name"
-            android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-            android:textColor="@color/primary"
-            android:textStyle="bold" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_post_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Farmer Name"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_status_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/bg_bubble_sent"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:text="Verified"
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_post_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="12dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:src="@drawable/ic_image" />
 
         <TextView
             android:id="@+id/tv_post_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Post Title"
-            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-            android:textColor="@color/on_surface"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv_post_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Post description goes here..."
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:textColor="@color/on_surface_variant" />
+            android:layout_marginTop="8dp"
+            android:text="High Quality Jasmine Palay"
+            android:textColor="@color/on_surface"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_post_date"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="@dimen/grid_2"
-            android:text="2023-10-25"
-            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-            android:textColor="@color/on_surface_variant" />
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_item_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#E8F5E9"
+                android:paddingHorizontal="6dp"
+                android:text="Grade A"
+                android:textColor="#2E7D32"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_item_moisture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="#E3F2FD"
+                android:paddingHorizontal="6dp"
+                android:text="14% Moisture"
+                android:textColor="#1565C0"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_item_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="📍 2.3 km"
+                android:textColor="@color/on_surface_variant"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="12dp"
+            android:background="@color/outline" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₱25.00/kg"
+                android:textColor="@color/primary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_post_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:text="2023-10-25"
+                android:textColor="@color/on_surface_variant"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -29,6 +29,19 @@
     <color name="loss_negative">#C62828</color>
     <color name="loss_negative_bg">#FFEBEE</color>
 
+    <!-- Semantic Profit Colors -->
+    <color name="profit_loss">#B3261E</color>
+    <color name="profit_low">#FFA500</color>
+    <color name="profit_high">#1B5E20</color>
+
+    <!-- Phase Progression Colors (Light to Dark) -->
+    <color name="phase_land_prep">#D8F3DC</color>
+    <color name="phase_crop_est">#B7E4C7</color>
+    <color name="phase_crop_mgmt">#95D5B2</color>
+    <color name="phase_monitoring">#74C69D</color>
+    <color name="phase_harvesting">#52B788</color>
+    <color name="phase_post_harvest">#40916C</color>
+
     <!-- Legacy aliases used across layouts -->
     <color name="mint_green">#52B788</color>
     <color name="pale_mint">#D8F3DC</color>
@@ -45,6 +58,7 @@
     <color name="light_gray">#F0F4F2</color>
     <color name="soft_gray">#F0F4F2</color>
     <color name="earth_green">#1B4332</color>
+    <color name="earth_green_light">#D8F3DC</color>
     <color name="white">#FFFFFF</color>
     <color name="neutral_white">#FFFFFF</color>
 </resources>

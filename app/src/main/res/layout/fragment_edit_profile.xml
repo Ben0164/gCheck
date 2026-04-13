@@ -1,108 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pure_white"
-    android:padding="16dp">
+    android:background="@color/background">
 
-    <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@android:drawable/ic_menu_revert"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/charcoal"
-        android:contentDescription="Back" />
-
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Edit Profile"
-        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
-        android:textColor="@color/dark_gray_text"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/btn_back"
-        app:layout_constraintStart_toEndOf="@id/btn_back"
-        app:layout_constraintTop_toTopOf="@id/btn_back" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_edit_avatar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/ic_user"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"
-        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
-        app:strokeColor="@color/mint_green"
-        app:strokeWidth="2dp" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_edit_name"
-        style="@style/Widget.GrainCheck.TextInputLayout"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:hint="Name"
-        app:layout_constraintTop_toBottomOf="@id/iv_edit_avatar">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_edit_name"
+        android:background="@color/surface"
+        app:elevation="0.5dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="Edit profile"
+            app:titleTextAppearance="@style/TextAppearance.GrainCheck.Title" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_input_gray"
-            android:padding="16dp"
-            android:text="Aeron John G. Ramos" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical"
+            android:padding="@dimen/grid_2">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_edit_email"
-        style="@style/Widget.GrainCheck.TextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="Email"
-        app:layout_constraintTop_toBottomOf="@id/til_edit_name">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_edit_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_input_gray"
-            android:padding="16dp"
-            android:text="aeron.ramos@example.com" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <!-- Profile Image Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/grid_2">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_edit_bio"
-        style="@style/Widget.GrainCheck.TextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="Bio"
-        app:layout_constraintTop_toBottomOf="@id/til_edit_email">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_edit_bio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_input_gray"
-            android:padding="16dp"
-            android:minLines="3"
-            android:gravity="top"
-            android:text="Farmer / Grain Buyer based in Bataan. Dedicated to high-quality crop production." />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_edit_avatar"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:padding="2dp"
+                    android:src="@drawable/ic_user"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+                    app:strokeColor="@color/outline_variant"
+                    app:strokeWidth="1dp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_save_changes"
-        style="@style/Widget.GrainCheck.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Save Changes"
-        app:layout_constraintTop_toBottomOf="@id/til_edit_bio" />
+                <TextView
+                    android:id="@+id/tv_change_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/grid_1"
+                    android:text="Edit picture or avatar"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Input Fields -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_edit_name"
+                style="@style/Widget.GrainCheck.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_1"
+                android:hint="Name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_edit_username"
+                style="@style/Widget.GrainCheck.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_2"
+                android:hint="Username">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_edit_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_edit_pronouns"
+                style="@style/Widget.GrainCheck.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_2"
+                android:hint="Pronouns">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_edit_pronouns"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_edit_bio"
+                style="@style/Widget.GrainCheck.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_2"
+                android:hint="Bio">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_edit_bio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:minLines="3" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="@dimen/grid_3"
+                android:background="@color/outline_variant" />
+
+            <!-- GrainCheck Specific Fields -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_edit_location"
+                style="@style/Widget.GrainCheck.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Location">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_edit_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_edit_phone"
+                style="@style/Widget.GrainCheck.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_2"
+                android:hint="Phone number">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_edit_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_edit_specialty"
+                style="@style/Widget.GrainCheck.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_2"
+                android:hint="Specialty (e.g. Organic rice)">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_edit_specialty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_edit_gender"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_2"
+                android:hint="Gender"
+                app:boxCornerRadiusBottomEnd="@dimen/input_corner"
+                app:boxCornerRadiusBottomStart="@dimen/input_corner"
+                app:boxCornerRadiusTopEnd="@dimen/input_corner"
+                app:boxCornerRadiusTopStart="@dimen/input_corner">
+
+                <AutoCompleteTextView
+                    android:id="@+id/act_edit_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save_profile"
+                style="@style/Widget.GrainCheck.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_4"
+                android:layout_marginBottom="@dimen/grid_2"
+                android:text="Save Changes" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

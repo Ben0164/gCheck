@@ -5,17 +5,17 @@
         android:icon="@drawable/ic_home_new"
         android:title="@string/title_home" />
     <item
-        android:id="@+id/navigation_inbox"
+        android:id="@+id/navigation_market"
         android:icon="@drawable/ic_inbox"
-        android:title="@string/title_inbox" />
+        android:title="@string/title_market" />
     <item
         android:id="@+id/navigation_scan"
         android:icon="@drawable/ic_scan"
         android:title="@string/title_scan" />
     <item
-        android:id="@+id/navigation_calculator"
-        android:icon="@drawable/ic_calc"
-        android:title="@string/title_calculator" />
+        android:id="@+id/navigation_inbox"
+        android:icon="@drawable/ic_email"
+        android:title="@string/title_chat" />
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_user"

@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:sqlite:./gcheck.db
+    driver-class-name: org.sqlite.JDBC
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.community.dialect.SQLiteDialect
+        format_sql: true
+    open-in-view: false
+
+app:
+  security:
+    jwt:
+      # Replace in production. Keep long and secret.
+      secret: "CHANGE_ME_TO_A_LONG_RANDOM_SECRET_CHANGE_ME_TO_A_LONG_RANDOM_SECRET"
+      issuer: "gcheck"
+      ttlMinutes: 10080 # 7 days
+

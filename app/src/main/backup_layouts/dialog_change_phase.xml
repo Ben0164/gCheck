@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Manual Phase"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
+
+    <RadioGroup
+        android:id="@+id/rg_phases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <RadioButton android:id="@+id/rb_land_prep" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Land Preparation" />
+        <RadioButton android:id="@+id/rb_planting" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Planting" />
+        <RadioButton android:id="@+id/rb_mgmt" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Crop Management" />
+        <RadioButton android:id="@+id/rb_monitoring" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Monitoring" />
+        <RadioButton android:id="@+id/rb_harvest" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Harvesting" />
+        <RadioButton android:id="@+id/rb_post_harvest" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Post-Harvest" />
+    </RadioGroup>
+
+</LinearLayout>

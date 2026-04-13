@@ -7,9 +7,7 @@ public class PostRepository {
     private static List<PostModel> posts = new ArrayList<>();
 
     static {
-        // Sample data
-        posts.add(new PostModel("John Dave Corpuz", "Good Quality", "Low moisture levels detected in Bataan.", "2023-10-25"));
-        posts.add(new PostModel("Aeron John G. Ramos", "Bumper Harvest", "Our Jasmine rice is looking great this season.", "2023-10-20"));
+        // Mock data removed for production stabilization
     }
 
     public static List<PostModel> getAllPosts() {
