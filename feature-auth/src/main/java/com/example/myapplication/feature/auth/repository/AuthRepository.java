@@ -30,10 +30,19 @@ public class AuthRepository {
 
     public void signup(String name, String email, String password, String role, AuthCallback callback) {
         executor.execute(() -> {
-            UserEntity user = new UserEntity(name, email, password, role);
-            long id = db.userDao().insert(user);
-            user.setId(id);
-            mainHandler.post(() -> callback.onResult(user));
+            try {
+                UserEntity user = new UserEntity(name, email, password, role);
+                long id = db.userDao().insert(user);
+                if (id > 0) {
+                    user.setId(id);
+                    mainHandler.post(() -> callback.onResult(user));
+                } else {
+                    mainHandler.post(() -> callback.onResult(null));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                mainHandler.post(() -> callback.onResult(null));
+            }
         });
     }
 }

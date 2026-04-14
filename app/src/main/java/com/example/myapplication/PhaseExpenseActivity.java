@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.core.common.ExpenseSummaryHelper;
-import com.example.myapplication.palay.data.adapter.ExpenseAdapter;
+import com.example.myapplication.feature.expense.ExpenseAdapter;
 import com.example.myapplication.core.data.db.AppDatabase;
 import com.example.myapplication.core.data.entity.ExpenseEntity;
 import com.example.myapplication.core.data.entity.ProductEntity;
@@ -22,6 +22,7 @@ import java.util.Locale;
 public class PhaseExpenseActivity extends AppCompatActivity {
 
     private String phaseName;
+    private long batchId;
     private AppDatabase db;
     private ExpenseAdapter adapter;
     private TextView tvPhaseTotal, tvPhaseExplicit, tvPhaseImplicit, tvBreakevenLabel;
@@ -33,6 +34,11 @@ public class PhaseExpenseActivity extends AppCompatActivity {
 
         phaseName = getIntent().getStringExtra("PHASE");
         if (phaseName == null) phaseName = "Land Preparation";
+        
+        batchId = getIntent().getLongExtra("BATCH_ID", -1);
+        if (batchId <= 0) {
+            batchId = 1; // Fallback to default batch if not provided
+        }
         
         db = AppDatabase.getInstance(this);
 
@@ -65,6 +71,7 @@ public class PhaseExpenseActivity extends AppCompatActivity {
         fabAdd.setOnClickListener(v -> {
             Intent intent = new Intent(this, ExpenseLedgerActivity.class);
             intent.putExtra("PHASE", phaseName);
+            intent.putExtra("BATCH_ID", batchId);
             startActivity(intent);
         });
     }
@@ -76,6 +83,7 @@ public class PhaseExpenseActivity extends AppCompatActivity {
         adapter.setOnExpenseClickListener(expense -> {
             Intent intent = new Intent(this, ExpenseLedgerActivity.class);
             intent.putExtra("PHASE", phaseName);
+            intent.putExtra("BATCH_ID", batchId);
             intent.putExtra("EXPENSE_ID", expense.getId());
             startActivity(intent);
         });
@@ -83,7 +91,7 @@ public class PhaseExpenseActivity extends AppCompatActivity {
     }
 
     private void loadExpenses() {
-        db.expenseDao().getExpensesByPhase(1, phaseName).observe(this, expenses -> {
+        db.expenseDao().getExpensesByPhase(batchId, phaseName).observe(this, expenses -> {
             if (expenses != null) {
                 adapter.setExpenses(expenses);
                 

@@ -29,11 +29,15 @@ android {
 
 dependencies {
     implementation(project(":core-data"))
+    implementation(project(":core-common"))
     
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("com.google.android.material:material:1.13.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
     
+    // Room runtime is needed since Repo uses AppDatabase
+    implementation("androidx.room:room-runtime:2.6.1")
+
     // Lifecycle + ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.8.7")
     implementation("androidx.lifecycle:lifecycle-livedata:2.8.7")

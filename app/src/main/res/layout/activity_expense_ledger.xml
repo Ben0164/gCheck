@@ -3,21 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="#F5F5F5">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:elevation="0dp">
+        android:background="#FFFFFF"
+        app:elevation="4dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="Expense Ledger"
-            app:titleTextColor="@color/earth_green" />
+            app:title="Production Ledger"
+            app:titleTextColor="#2E7D32"
+            app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -29,23 +30,69 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
+            <!-- Total Ledger Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="16dp"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:strokeWidth="0dp">
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#2E7D32">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Ledger"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:alpha="0.9" />
+
+                    <TextView
+                        android:id="@+id/tv_total_ledger"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="₱0.00"
+                        android:textColor="#FFFFFF"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Add Expense Form Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#E0E0E0">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add Expense"
+                        android:textColor="#212121"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -77,7 +124,7 @@
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="12dp"
                         android:hint="Specify Method"
                         android:visibility="gone">
                         <com.google.android.material.textfield.TextInputEditText
@@ -150,7 +197,7 @@
                         android:id="@+id/layout_standard_fields"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="12dp"
                         android:orientation="horizontal">
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -158,7 +205,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_marginEnd="4dp"
+                            android:layout_marginEnd="8dp"
                             android:hint="Qty">
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_quantity"
@@ -172,7 +219,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_marginHorizontal="4dp"
+                            android:layout_marginHorizontal="8dp"
                             android:hint="Unit">
                             <AutoCompleteTextView
                                 android:id="@+id/sp_unit"
@@ -185,9 +232,9 @@
                             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.2"
-                            android:layout_marginStart="4dp"
-                            android:hint="Price/Unit">
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:hint="Price">
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_price"
                                 android:layout_width="match_parent"
@@ -201,7 +248,7 @@
                         android:id="@+id/layout_implicit_fields"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="12dp"
                         android:orientation="horizontal"
                         android:visibility="gone">
 
@@ -210,7 +257,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_marginEnd="4dp"
+                            android:layout_marginEnd="8dp"
                             android:hint="Daily Wage">
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_daily_wage"
@@ -224,7 +271,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_marginStart="4dp"
+                            android:layout_marginStart="8dp"
                             android:hint="Days">
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_days"
@@ -234,21 +281,26 @@
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
+                    <!-- Cost Display and Save Button -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:layout_marginTop="16dp">
+                        android:layout_marginTop="20dp">
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_save"
                             android:layout_width="0dp"
-                            android:layout_height="54dp"
+                            android:layout_height="56dp"
                             android:layout_weight="1"
                             android:text="Save Expense"
-                            android:textColor="@color/white"
-                            app:cornerRadius="12dp" />
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:backgroundTint="#2E7D32"
+                            app:cornerRadius="12dp"
+                            app:elevation="0dp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -260,16 +312,16 @@
                                 android:id="@+id/tv_cost_label"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Actual Cost"
-                                android:textSize="11sp"
-                                android:textColor="@color/gray_text" />
+                                android:text="Cost"
+                                android:textSize="12sp"
+                                android:textColor="#757575" />
                             <TextView
                                 android:id="@+id/tv_form_total"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="₱0.00"
-                                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-                                android:textColor="@color/primary"
+                                android:textSize="20sp"
+                                android:textColor="#2E7D32"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
@@ -279,38 +331,25 @@
                         style="@style/Widget.Material3.Button.TextButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="12dp"
                         android:text="Delete Expense"
-                        android:textColor="@color/error"
+                        android:textColor="#D32F2F"
+                        android:textSize="14sp"
                         android:visibility="gone" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- Recent Entries Section -->
+            <TextView
+                android:id="@+id/tv_recent_entries_title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="8dp"
-                android:gravity="center_vertical">
-                <TextView
-                    android:id="@+id/tv_recent_entries_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Recent Entries"
-                    android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
-                    android:textColor="@color/gray_text" />
-                <TextView
-                    android:id="@+id/tv_total_ledger"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="₱0.00"
-                    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-                    android:textColor="@color/primary"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:text="Recent Entries"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#212121"
+                android:layout_marginBottom="12dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_expenses"

@@ -13,7 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.myapplication.palay.data.adapter.ExpenseAdapter;
+import com.example.myapplication.feature.expense.ExpenseAdapter;
 import com.example.myapplication.core.data.db.AppDatabase;
 import com.example.myapplication.core.data.entity.ExpenseEntity;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -205,128 +205,154 @@ public class ExpenseLedgerActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle(currentPhase + " Ledger");
-            toolbar.setNavigationOnClickListener(v -> finish());
-        }
-
-        spActivity = findViewById(R.id.sp_activity);
-        spMethod = findViewById(R.id.sp_method);
-        spExpenseType = findViewById(R.id.sp_expense_type);
-        spLaborType = findViewById(R.id.sp_labor_type);
-        spInternalHauling = findViewById(R.id.sp_internal_hauling); 
-        spUnit = findViewById(R.id.sp_unit);
-        
-        etProduct = findViewById(R.id.et_product);
-        etQuantity = findViewById(R.id.et_quantity);
-        etPrice = findViewById(R.id.et_price);
-        etDailyWage = findViewById(R.id.et_daily_wage);
-        etDays = findViewById(R.id.et_days);
-        etOtherMethod = findViewById(R.id.et_other_method);
-        
-        tilOtherMethod = findViewById(R.id.til_other_method);
-        tilProduct = findViewById(R.id.til_product);
-        tilLaborType = findViewById(R.id.til_labor_type);
-        tilInternalHauling = findViewById(R.id.til_internal_hauling); 
-        
-        layoutStandardFields = findViewById(R.id.layout_standard_fields);
-        layoutImplicitFields = findViewById(R.id.layout_implicit_fields);
-
-        btnSave = findViewById(R.id.btn_save);
-        btnDelete = findViewById(R.id.btn_delete);
-        tvTotalLedger = findViewById(R.id.tv_total_ledger);
-        tvFormTotal = findViewById(R.id.tv_form_total);
-        tvRecentEntriesTitle = findViewById(R.id.tv_recent_entries_title);
-        tvCostLabel = findViewById(R.id.tv_cost_label);
-        rvExpenses = findViewById(R.id.rv_expenses);
-
-        if (tvRecentEntriesTitle != null) tvRecentEntriesTitle.setText("Recent " + currentPhase + " Entries");
-
-        rvExpenses.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ExpenseAdapter(new ArrayList<>());
-        adapter.setOnExpenseClickListener(this::editExpense);
-        rvExpenses.setAdapter(adapter);
-
-        spActivity.setOnItemClickListener((parent, view, position, id) -> updateMethodAdapter((String) parent.getItemAtPosition(position)));
-
-        spMethod.setOnItemClickListener((parent, view, position, id) -> {
-            String selectedMethod = (String) parent.getItemAtPosition(position);
-            tilOtherMethod.setVisibility("Other".equals(selectedMethod) ? View.VISIBLE : View.GONE);
-            updateExpenseTypeAdapter(spActivity.getText().toString(), selectedMethod);
-        });
-
-        spExpenseType.setOnItemClickListener((parent, view, position, id) -> {
-            String selectedType = (String) parent.getItemAtPosition(position);
-            boolean isHauling = selectedType.toLowerCase().contains("transport") || selectedType.toLowerCase().contains("hauling");
-            tilInternalHauling.setVisibility(isHauling ? View.VISIBLE : View.GONE);
-            if (isHauling) {
-                Toast.makeText(this, "Use Internal Transport for farm logistics only. Buyer transport is calculated automatically.", Toast.LENGTH_SHORT).show();
+        try {
+            MaterialToolbar toolbar = findViewById(R.id.toolbar);
+            if (toolbar != null) {
+                setSupportActionBar(toolbar);
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                    getSupportActionBar().setTitle(currentPhase + " Ledger");
+                    toolbar.setNavigationOnClickListener(v -> finish());
+                }
             }
 
-            boolean isLabor = selectedType.toLowerCase().contains("labor");
-            tilLaborType.setVisibility(isLabor ? View.VISIBLE : View.GONE);
+            spActivity = findViewById(R.id.sp_activity);
+            spMethod = findViewById(R.id.sp_method);
+            spExpenseType = findViewById(R.id.sp_expense_type);
+            spLaborType = findViewById(R.id.sp_labor_type);
+            spInternalHauling = findViewById(R.id.sp_internal_hauling); 
+            spUnit = findViewById(R.id.sp_unit);
             
-            boolean isOther = "Other".equals(selectedType);
-            tilProduct.setVisibility(isOther ? View.VISIBLE : View.GONE);
-            if (!isOther) etProduct.setText(selectedType); else etProduct.setText("");
+            etProduct = findViewById(R.id.et_product);
+            etQuantity = findViewById(R.id.et_quantity);
+            etPrice = findViewById(R.id.et_price);
+            etDailyWage = findViewById(R.id.et_daily_wage);
+            etDays = findViewById(R.id.et_days);
+            etOtherMethod = findViewById(R.id.et_other_method);
             
-            if (!isLabor) resetLaborView();
-        });
+            tilOtherMethod = findViewById(R.id.til_other_method);
+            tilProduct = findViewById(R.id.til_product);
+            tilLaborType = findViewById(R.id.til_labor_type);
+            tilInternalHauling = findViewById(R.id.til_internal_hauling); 
+            
+            layoutStandardFields = findViewById(R.id.layout_standard_fields);
+            layoutImplicitFields = findViewById(R.id.layout_implicit_fields);
 
-        spLaborType.setOnItemClickListener((parent, view, position, id) -> {
-            boolean isOwner = position == 1; // Owner Labor
-            layoutStandardFields.setVisibility(isOwner ? View.GONE : View.VISIBLE);
-            layoutImplicitFields.setVisibility(isOwner ? View.VISIBLE : View.GONE);
-            tvCostLabel.setText(isOwner ? "Est. Labor Cost" : "Actual Cost");
-            calculateTotal();
-        });
+            btnSave = findViewById(R.id.btn_save);
+            btnDelete = findViewById(R.id.btn_delete);
+            tvTotalLedger = findViewById(R.id.tv_total_ledger);
+            tvFormTotal = findViewById(R.id.tv_form_total);
+            tvRecentEntriesTitle = findViewById(R.id.tv_recent_entries_title);
+            tvCostLabel = findViewById(R.id.tv_cost_label);
+            rvExpenses = findViewById(R.id.rv_expenses);
+
+            if (tvRecentEntriesTitle != null) tvRecentEntriesTitle.setText("Recent " + currentPhase + " Entries");
+
+            if (rvExpenses != null) {
+                rvExpenses.setLayoutManager(new LinearLayoutManager(this));
+                adapter = new ExpenseAdapter(new ArrayList<>());
+                adapter.setOnExpenseClickListener(this::editExpense);
+                rvExpenses.setAdapter(adapter);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error initializing views", Toast.LENGTH_SHORT).show();
+        }
+
+        if (spActivity != null) {
+            spActivity.setOnItemClickListener((parent, view, position, id) -> updateMethodAdapter((String) parent.getItemAtPosition(position)));
+        }
+
+        if (spMethod != null) {
+            spMethod.setOnItemClickListener((parent, view, position, id) -> {
+                String selectedMethod = (String) parent.getItemAtPosition(position);
+                if (tilOtherMethod != null) {
+                    tilOtherMethod.setVisibility("Other".equals(selectedMethod) ? View.VISIBLE : View.GONE);
+                }
+                updateExpenseTypeAdapter(spActivity.getText().toString(), selectedMethod);
+            });
+        }
+
+        if (spExpenseType != null) {
+            spExpenseType.setOnItemClickListener((parent, view, position, id) -> {
+                String selectedType = (String) parent.getItemAtPosition(position);
+                boolean isHauling = selectedType.toLowerCase().contains("transport") || selectedType.toLowerCase().contains("hauling");
+                if (tilInternalHauling != null) {
+                    tilInternalHauling.setVisibility(isHauling ? View.VISIBLE : View.GONE);
+                }
+                if (isHauling) {
+                    Toast.makeText(this, "Use Internal Transport for farm logistics only. Buyer transport is calculated automatically.", Toast.LENGTH_SHORT).show();
+                }
+
+                boolean isLabor = selectedType.toLowerCase().contains("labor");
+                if (tilLaborType != null) {
+                    tilLaborType.setVisibility(isLabor ? View.VISIBLE : View.GONE);
+                }
+                
+                boolean isOther = "Other".equals(selectedType);
+                if (tilProduct != null) {
+                    tilProduct.setVisibility(isOther ? View.VISIBLE : View.GONE);
+                    if (!isOther && etProduct != null) etProduct.setText(selectedType); 
+                    else if (etProduct != null) etProduct.setText("");
+                }
+                
+                if (!isLabor) resetLaborView();
+            });
+        }
+
+        if (spLaborType != null) {
+            spLaborType.setOnItemClickListener((parent, view, position, id) -> {
+                boolean isOwner = position == 1; // Owner Labor
+                if (layoutStandardFields != null) layoutStandardFields.setVisibility(isOwner ? View.GONE : View.VISIBLE);
+                if (layoutImplicitFields != null) layoutImplicitFields.setVisibility(isOwner ? View.VISIBLE : View.GONE);
+                if (tvCostLabel != null) tvCostLabel.setText(isOwner ? "Est. Labor Cost" : "Actual Cost");
+                calculateTotal();
+            });
+        }
 
         TextWatcher watcher = new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) { calculateTotal(); }
             @Override public void afterTextChanged(Editable s) {}
         };
-        etQuantity.addTextChangedListener(watcher);
-        etPrice.addTextChangedListener(watcher);
-        etDailyWage.addTextChangedListener(watcher);
-        etDays.addTextChangedListener(watcher);
+        if (etQuantity != null) etQuantity.addTextChangedListener(watcher);
+        if (etPrice != null) etPrice.addTextChangedListener(watcher);
+        if (etDailyWage != null) etDailyWage.addTextChangedListener(watcher);
+        if (etDays != null) etDays.addTextChangedListener(watcher);
 
-        btnSave.setOnClickListener(v -> saveExpense());
-        btnDelete.setOnClickListener(v -> showDeleteConfirmation());
+        if (btnSave != null) btnSave.setOnClickListener(v -> saveExpense());
+        if (btnDelete != null) btnDelete.setOnClickListener(v -> showDeleteConfirmation());
     }
 
     private void resetLaborView() {
-        tilLaborType.setVisibility(View.GONE);
-        layoutStandardFields.setVisibility(View.VISIBLE);
-        layoutImplicitFields.setVisibility(View.GONE);
-        tvCostLabel.setText("Actual Cost");
-        spLaborType.setText("", false);
+        if (tilLaborType != null) tilLaborType.setVisibility(View.GONE);
+        if (layoutStandardFields != null) layoutStandardFields.setVisibility(View.VISIBLE);
+        if (layoutImplicitFields != null) layoutImplicitFields.setVisibility(View.GONE);
+        if (tvCostLabel != null) tvCostLabel.setText("Actual Cost");
+        if (spLaborType != null) spLaborType.setText("", false);
     }
 
     private void setupAdapters() {
         Map<String, Map<String, List<String>>> activitiesMap = MASTER_MAP.get(currentPhase);
         String[] activities = (activitiesMap != null) ? activitiesMap.keySet().toArray(new String[0]) : new String[]{};
-        spActivity.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, activities));
-        spUnit.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, UNITS));
-        spLaborType.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, LABOR_TYPES));
-        spInternalHauling.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, HAULING_TYPES));
+        if (spActivity != null) spActivity.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, activities));
+        if (spUnit != null) spUnit.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, UNITS));
+        if (spLaborType != null) spLaborType.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, LABOR_TYPES));
+        if (spInternalHauling != null) spInternalHauling.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, HAULING_TYPES));
     }
 
     private void updateMethodAdapter(String activity) {
         Map<String, Map<String, List<String>>> activitiesMap = MASTER_MAP.get(currentPhase);
         if (activitiesMap != null) {
             Map<String, List<String>> methodsMap = activitiesMap.get(activity);
-            if (methodsMap != null) {
+            if (methodsMap != null && spMethod != null) {
                 List<String> methods = new ArrayList<>(methodsMap.keySet());
                 if (!methods.contains("Other")) methods.add("Other");
                 spMethod.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, methods));
             }
         }
-        spMethod.setText("", false);
-        spExpenseType.setText("", false);
+        if (spMethod != null) spMethod.setText("", false);
+        if (spExpenseType != null) spExpenseType.setText("", false);
         resetLaborView();
     }
 
@@ -341,42 +367,44 @@ public class ExpenseLedgerActivity extends AppCompatActivity {
             }
         }
         if (!types.contains("Other")) types.add("Other");
-        spExpenseType.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, types));
-        spExpenseType.setText("", false);
+        if (spExpenseType != null) {
+            spExpenseType.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, types));
+            spExpenseType.setText("", false);
+        }
         resetLaborView();
     }
 
     private void calculateTotal() {
         try {
             double total = 0;
-            if (layoutImplicitFields.getVisibility() == View.VISIBLE) {
-                String wageS = etDailyWage.getText().toString();
-                String daysS = etDays.getText().toString();
+            if (layoutImplicitFields != null && layoutImplicitFields.getVisibility() == View.VISIBLE) {
+                String wageS = etDailyWage != null ? etDailyWage.getText().toString() : "";
+                String daysS = etDays != null ? etDays.getText().toString() : "";
                 if (!wageS.isEmpty() && !daysS.isEmpty()) {
                     total = Double.parseDouble(wageS) * Double.parseDouble(daysS);
                 }
             } else {
-                String qS = etQuantity.getText().toString();
-                String pS = etPrice.getText().toString();
+                String qS = etQuantity != null ? etQuantity.getText().toString() : "";
+                String pS = etPrice != null ? etPrice.getText().toString() : "";
                 if (!qS.isEmpty() && !pS.isEmpty()) {
                     total = Double.parseDouble(qS) * Double.parseDouble(pS);
                 }
             }
-            tvFormTotal.setText(String.format(Locale.getDefault(), "₱%.2f", total));
+            if (tvFormTotal != null) tvFormTotal.setText(String.format(Locale.getDefault(), "₱%.2f", total));
         } catch (Exception e) {
-            tvFormTotal.setText("₱0.00");
+            if (tvFormTotal != null) tvFormTotal.setText("₱0.00");
         }
     }
 
     private void loadExpenses() {
         db.expenseDao().getExpensesByBatch(currentBatchId).observe(this, expenses -> {
-            if (expenses != null) {
+            if (expenses != null && adapter != null) {
                 adapter.setExpenses(expenses);
                 double total = 0;
                 for (ExpenseEntity e : expenses) {
                     total += (e.getLaborType() != null && e.getLaborType().equals("owner")) ? e.getImplicitCost() : e.getTotalCost();
                 }
-                tvTotalLedger.setText(String.format(Locale.getDefault(), "₱%.2f", total));
+                if (tvTotalLedger != null) tvTotalLedger.setText(String.format(Locale.getDefault(), "₱%.2f", total));
             }
         });
     }

@@ -19,7 +19,12 @@ public class UserEntity {
     private String phone;
     private String specialty;
     private String gender;
+    private String profileImageUrl;
 
+    public UserEntity() {
+    }
+
+    @androidx.room.Ignore
     public UserEntity(String name, String email, String password, String role) {
         this.name = name;
         this.email = email;
@@ -52,4 +57,6 @@ public class UserEntity {
     public void setSpecialty(String specialty) { this.specialty = specialty; }
     public String getGender() { return gender; }
     public void setGender(String gender) { this.gender = gender; }
+    public String getProfileImageUrl() { return profileImageUrl; }
+    public void setProfileImageUrl(String profileImageUrl) { this.profileImageUrl = profileImageUrl; }
 }

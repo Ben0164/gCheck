@@ -57,7 +57,27 @@
                     android:text="A"
                     android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
                     android:textColor="@color/primary"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_grade"
+                    style="@style/Widget.GrainCheck.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:hint="@string/grade_label"
+                    android:visibility="gone"
+                    app:startIconDrawable="@drawable/ic_land_prep"
+                    app:startIconTint="@color/on_surface_variant">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_listing_grade"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -125,6 +145,68 @@
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- AI Verified Badge -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_verified_badge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_2"
+            app:cardBackgroundColor="#E8F5E9"
+            app:cardCornerRadius="8dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_check_circle"
+                    android:tint="#4CAF50" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="✔ Verified by GCheck AI"
+                    android:textSize="14sp"
+                    android:textColor="#1B5E20"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Demo Label (hidden by default) -->
+        <TextView
+            android:id="@+id/tv_demo_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_2"
+            android:text="⚠ Demo Data • Not AI Verified"
+            android:textSize="14sp"
+            android:textColor="#FF9800"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="12dp"
+            android:background="#FFF3E0"
+            android:visibility="gone" />
+
+        <!-- Demo Mode Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_demo_mode"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_2"
+            android:text="Create Demo Listing"
+            android:textColor="#757575"
+            app:strokeColor="#BDBDBD" />
+
+        <!-- Post Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_post_listing"
             style="@style/Widget.GrainCheck.Button.Primary"

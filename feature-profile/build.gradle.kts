@@ -35,6 +35,10 @@ dependencies {
     implementation("com.google.android.material:material:1.13.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.room:room-runtime:2.6.1")
+
+    // CircleImageView for profile images
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 
     // Lifecycle + ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.8.7")

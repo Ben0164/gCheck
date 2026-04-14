@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+    <LinearLayout android:id="@+id/layout_no_batch" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <LinearLayout android:id="@+id/layout_dashboard_content" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.button.MaterialButton android:id="@+id/btn_create_batch_first" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <com.google.android.material.button.MaterialButton android:id="@+id/btn_complete_batch" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_ledger_title" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_total_expenses_all" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_breakeven_price" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_expected_yield" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_cost_display_label" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_est_profit" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_breakeven_hint" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <EditText android:id="@+id/et_sell_price" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_production_cost_subtotal" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_internal_transport" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_transport_to_buyer" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_grand_total_all" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <LinearLayout android:id="@+id/layout_implicit_summary" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.materialswitch.MaterialSwitch android:id="@+id/switch_profit_mode" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_current_phase_display" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_phase_suggestion" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/phase_progress_bar" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.button.MaterialButton android:id="@+id/btn_change_phase" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <com.google.android.material.button.MaterialButton android:id="@+id/btn_reset_auto" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <com.google.android.material.button.MaterialButton android:id="@+id/btn_back_to_logbook" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_batch_status" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <LinearLayout android:id="@+id/phase_land_prep" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <LinearLayout android:id="@+id/phase_crop_est" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <LinearLayout android:id="@+id/phase_crop_mgmt" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <LinearLayout android:id="@+id/phase_monitoring" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <LinearLayout android:id="@+id/phase_harvest" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <LinearLayout android:id="@+id/phase_post_harvest" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_expenses" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
+</LinearLayout>

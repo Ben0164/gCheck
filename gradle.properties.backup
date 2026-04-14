@@ -1,0 +1,21 @@
+# Project-wide Gradle settings.
+org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
+android.nonTransitiveRClass=false
+
+# These properties are required by Android plugins
+compileSdkVersion=34
+minSdkVersion=24
+targetSdkVersion=34
+# Newer plugins use these names
+compileSdk=34
+minSdk=24
+targetSdk=34
+
+# Disable daemon to avoid Java version issues
+org.gradle.daemon=false
+
+# Force Java home to Android Studio JBR
+org.gradle.java.home=C:/Program Files/Android/Android Studio/jbr
+
+# Disable Java version detection
+org.gradle.java.installations.auto-detect=false

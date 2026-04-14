@@ -22,11 +22,6 @@
         </activity>
 
         <activity
-            android:name=".CreateBatchActivity"
-            android:exported="false"
-            android:label="Create New Batch" />
-
-        <activity
             android:name=".ExpensePhaseActivity"
             android:exported="false"
             android:label="Production Ledger" />

@@ -10,11 +10,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.myapplication.feature.logbook.LogbookFragment;
+import com.example.myapplication.feature.collaboration.CollaborationFragment;
+import com.example.myapplication.feature.collaboration.CreatePostFragment;
+import com.example.myapplication.feature.collaboration.PostAdapter;
+import com.example.myapplication.feature.collaboration.PostModel;
+import com.example.myapplication.feature.collaboration.PostRepository;
 import com.example.myapplication.core.data.db.AppDatabase;
 import com.example.myapplication.core.data.entity.ExpenseEntity;
 import com.example.myapplication.core.data.entity.UserEntity;
-import com.example.myapplication.palay.data.repository.MarketplaceRepository;
-import com.example.myapplication.palay.data.repository.SessionManager;
+import com.example.myapplication.core.common.SessionManager;
+import com.example.myapplication.feature.marketplace.repository.MarketplaceRepository;
 import java.util.List;
 import java.util.Locale;
 
@@ -32,18 +38,29 @@ public class HomeFragment extends Fragment {
 
         // Dashboard Summary Data
         TextView tvTotalExpenses = view.findViewById(R.id.tv_total_expenses_home);
+        if (tvTotalExpenses != null) {
+            tvTotalExpenses.setText("₱0.00");
+        }
+
         if (userId != -1) {
-            AppDatabase.getInstance(requireContext()).expenseDao().getExpensesByUser(userId).observe(getViewLifecycleOwner(), expenses -> {
-                if (expenses != null) {
-                    double total = 0;
-                    for (ExpenseEntity e : expenses) {
-                        total += e.getTotalCost();
+            try {
+                AppDatabase.getInstance(requireContext()).expenseDao().getExpensesByUser(userId).observe(getViewLifecycleOwner(), expenses -> {
+                    if (expenses != null && !expenses.isEmpty()) {
+                        double total = 0;
+                        for (ExpenseEntity e : expenses) {
+                            total += e.getTotalCost();
+                        }
+                        if (tvTotalExpenses != null) {
+                            tvTotalExpenses.setText(String.format(Locale.getDefault(), "₱%.2f", total));
+                        }
                     }
-                    if (tvTotalExpenses != null) {
-                        tvTotalExpenses.setText(String.format(Locale.getDefault(), "₱%.2f", total));
-                    }
+                });
+            } catch (Exception e) {
+                // Handle database error gracefully
+                if (tvTotalExpenses != null) {
+                    tvTotalExpenses.setText("₱0.00");
                 }
-            });
+            }
         }
 
         // Quick Actions

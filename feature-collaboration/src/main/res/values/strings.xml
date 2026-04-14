@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Collaboration Module Strings -->
+    <string name="collaboration_title">Community Collaboration</string>
+    <string name="collaboration_desc">Connect with fellow farmers, share knowledge, and grow together</string>
+    
+    <!-- Create Post Strings -->
+    <string name="create_post_title">Create Post</string>
+    <string name="share_farming_update">Share your farming update...</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="remove_photo">Remove photo</string>
+    <string name="post_button">Post</string>
+    <string name="posting">Posting...</string>
+    
+    <!-- Phase Tags -->
+    <string name="phase_land_preparation">Land Preparation</string>
+    <string name="phase_planting">Planting</string>
+    <string name="phase_growing">Growing</string>
+    <string name="phase_harvesting">Harvesting</string>
+    <string name="phase_post_harvest">Post-Harvest</string>
+    <string name="phase_marketing">Marketing</string>
+    
+    <!-- Audience Tags -->
+    <string name="audience_public">Public</string>
+    <string name="audience_advice">Advice</string>
+    <string name="audience_question">Question</string>
+    <string name="audience_update">Update</string>
+    
+    <!-- Validation Messages -->
+    <string name="error_caption_too_long">Caption is too long (max 1000 characters)</string>
+    <string name="error_invalid_image_format">Invalid image format. Supported formats: JPG, JPEG, PNG</string>
+    <string name="error_required_field">Either caption or image is required</string>
+    <string name="error_empty_comment">Comment cannot be empty</string>
+    <string name="error_comment_too_long">Comment is too long (max 500 characters)</string>
+    
+    <!-- Success Messages -->
+    <string name="post_created_success">Post created successfully!</string>
+    <string name="post_updated_success">Post updated successfully!</string>
+    <string name="post_deleted_success">Post deleted successfully!</string>
+    <string name="comment_added_success">Comment added successfully!</string>
+    <string name="comment_deleted_success">Comment deleted successfully!</string>
+    
+    <!-- Interaction Labels -->
+    <string name="like_button">Helpful</string>
+    <string name="comment_button">Comment</string>
+    <string name="share_button">Share</string>
+    <string name="edit_button">Edit</string>
+    <string name="delete_button">Delete</string>
+    <string name="reply_button">Reply</string>
+    
+    <!-- Character Count -->
+    <string name="character_count">%1$d/%2$d</string>
+    
+    <!-- Empty States -->
+    <string name="no_posts_available">No posts available. Create your first post!</string>
+    <string name="no_comments_available">No comments yet. Be the first to comment!</string>
+    <string name="no_posts_user">You haven\'t created any posts yet.</string>
+    
+    <!-- Loading States -->
+    <string name="loading_posts">Loading posts...</string>
+    <string name="loading_comments">Loading comments...</string>
+    <string name="loading_image">Loading image...</string>
+    
+    <!-- Error States -->
+    <string name="error_loading_posts">Failed to load posts</string>
+    <string name="error_loading_comments">Failed to load comments</string>
+    <string name="error_uploading_image">Failed to upload image</string>
+    <string name="error_network">Network error. Please try again.</string>
+    
+    <!-- Confirmation Messages -->
+    <string name="confirm_delete_post">Are you sure you want to delete this post?</string>
+    <string name="confirm_delete_comment">Are you sure you want to delete this comment?</string>
+    <string name="confirm_discard_post">You have unsaved changes. Are you sure you want to discard this post?</string>
+    
+    <!-- Actions -->
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep Editing</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="publish">Publish</string>
+    
+    <!-- Helper Text -->
+    <string name="helper_caption_optional">Optional if image is provided</string>
+    <string name="helper_required_field">This field is required</string>
+</resources>

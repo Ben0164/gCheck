@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#2D6A4F</color>
+    <color name="primary_dark">#1B4332</color>
+    <color name="primary_light">#52B788</color>
+    <color name="primary_container">#D8F3DC</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_primary_container">#1B4332</color>
+
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_dim">#F4F7F5</color>
+    <color name="surface_bright">#FFFFFF</color>
+    <color name="surface_variant">#E8F0EC</color>
+
+    <color name="background">#F7FAF8</color>
+
+    <color name="on_surface">#1A211E</color>
+    <color name="on_surface_variant">#5C6B64</color>
+    <color name="outline">#C5D4CC</color>
+    <color name="outline_variant">#E0E8E4</color>
+
+    <color name="error">#B3261E</color>
+    <color name="on_error">#FFFFFF</color>
+    <color name="error_container">#F9DEDC</color>
+
+    <color name="profit_positive">#1B5E20</color>
+    <color name="profit_positive_bg">#E8F5E9</color>
+    <color name="loss_negative">#C62828</color>
+    <color name="loss_negative_bg">#FFEBEE</color>
+
+    <color name="profit_loss">#B3261E</color>
+    <color name="profit_low">#FFA500</color>
+    <color name="profit_high">#1B5E20</color>
+
+    <color name="phase_land_prep">#D8F3DC</color>
+    <color name="phase_crop_est">#B7E4C7</color>
+    <color name="phase_crop_mgmt">#95D5B2</color>
+    <color name="phase_monitoring">#74C69D</color>
+    <color name="phase_harvesting">#52B788</color>
+    <color name="phase_post_harvest">#40916C</color>
+
+    <color name="mint_green">#52B788</color>
+    <color name="pale_mint">#D8F3DC</color>
+    <color name="pure_white">#FFFFFF</color>
+    <color name="input_gray">#EDF2EF</color>
+    <color name="charcoal">#3D4A44</color>
+    <color name="dark_gray_text">#1A211E</color>
+    <color name="soft_green">#2D6A4F</color>
+    <color name="soft_green_light">#95D5B2</color>
+    <color name="soft_green_dark">#1B4332</color>
+    <color name="bg_gradient_start">#E8F5E9</color>
+    <color name="bg_gradient_end">#B7E4C7</color>
+    <color name="gray_text">#5C6B64</color>
+    <color name="light_gray">#F0F4F2</color>
+    <color name="soft_gray">#F0F4F2</color>
+    <color name="earth_green">#1B4332</color>
+    <color name="earth_green_light">#D8F3DC</color>
+    <color name="white">#FFFFFF</color>
+    <color name="neutral_white">#FFFFFF</color>
+</resources>

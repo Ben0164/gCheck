@@ -1,0 +1,26 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "gCheck"
+include(":app")
+include(":core-data")
+include(":core-common")
+include(":feature-auth")
+include(":feature-profile")
+include(":feature-expense")
+include(":feature-marketplace")
+include(":feature-analysis")
+include(":feature-logbook")
+include(":feature-collaboration")

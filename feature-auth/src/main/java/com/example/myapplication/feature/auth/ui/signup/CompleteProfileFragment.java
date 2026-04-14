@@ -10,10 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.myapplication.R;
+import com.example.myapplication.feature.auth.R;
 import com.example.myapplication.core.data.db.AppDatabase;
 import com.example.myapplication.core.data.entity.UserEntity;
-import com.example.myapplication.palay.data.repository.SessionManager;
+import com.example.myapplication.core.common.SessionManager;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -75,7 +75,6 @@ public class CompleteProfileFragment extends Fragment {
                     requireActivity().runOnUiThread(() -> {
                         SessionManager.setCurrentUser(currentUser);
                         Toast.makeText(requireContext(), "Profile completed!", Toast.LENGTH_SHORT).show();
-                        // Navigation logic will be handled by the Activity
                     });
                 }
             });

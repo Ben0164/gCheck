@@ -11,9 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.R;
+import com.example.myapplication.feature.profile.R;
 import com.example.myapplication.core.data.db.AppDatabase;
-import com.example.myapplication.palay.data.repository.SessionManager;
+import com.example.myapplication.core.common.SessionManager;
 import java.util.ArrayList;
 
 public class ProfileListingsFragment extends Fragment {
@@ -54,7 +54,7 @@ public class ProfileListingsFragment extends Fragment {
                 rvListings.setVisibility(View.VISIBLE);
                 // Update adapter with images - since ProductEntity might not have image yet, using placeholder
                 ArrayList<Integer> placeholders = new ArrayList<>();
-                for (int i = 0; i < listings.size(); i++) placeholders.add(R.drawable.ic_grain);
+                for (int i = 0; i < listings.size(); i++) placeholders.add(android.R.drawable.ic_menu_gallery);
                 ((ProfileGridAdapter) rvListings.getAdapter()).updateItems(placeholders);
             }
         });

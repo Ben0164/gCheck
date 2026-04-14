@@ -89,4 +89,45 @@ public class ProfitCalculator {
         // Net Profit = Revenue - (Sunk Costs + Future Fulfillment Costs)
         return revenue.subtract(totalSunkCost).subtract(fulfillmentHauling).setScale(2, RoundingMode.HALF_UP);
     }
+
+    /**
+     * Calculates the floor price for a marketplace listing.
+     * Floor price ensures the farmer never sells at a loss.
+     * Floor Price = (Total Expenses / Yield) + Profit Margin
+     */
+    public static double calculateFloorPrice(double totalExpenses, double yield, double profitMarginPercentage) {
+        if (yield <= 0) return 0.0;
+        
+        BigDecimal expenses = BigDecimal.valueOf(totalExpenses);
+        BigDecimal qty = BigDecimal.valueOf(yield);
+        BigDecimal breakeven = expenses.divide(qty, 2, RoundingMode.HALF_UP);
+        
+        // Add profit margin (e.g., 10% = 0.10)
+        BigDecimal margin = breakeven.multiply(BigDecimal.valueOf(profitMarginPercentage));
+        BigDecimal floorPrice = breakeven.add(margin);
+        
+        return floorPrice.doubleValue();
+    }
+
+    /**
+     * Calculates dynamic price based on bid vs regional price.
+     * Dynamic Value Convergence: Use higher of bid price or regional price.
+     */
+    public static double calculateDynamicPrice(double highestBid, double regionalPrice) {
+        return Math.max(highestBid, regionalPrice);
+    }
+
+    /**
+     * Calculates final profit after transaction.
+     * Profit = (Final Sale Price × Yield) - Total Expenses - Logistics Cost
+     */
+    public static double calculateFinalProfit(double finalSalePrice, double yield, double totalExpenses, double logisticsCost) {
+        BigDecimal price = BigDecimal.valueOf(finalSalePrice);
+        BigDecimal qty = BigDecimal.valueOf(yield);
+        BigDecimal revenue = price.multiply(qty);
+        BigDecimal expenses = BigDecimal.valueOf(totalExpenses);
+        BigDecimal logistics = BigDecimal.valueOf(logisticsCost);
+        
+        return revenue.subtract(expenses).subtract(logistics).doubleValue();
+    }
 }

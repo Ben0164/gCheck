@@ -32,6 +32,7 @@ dependencies {
     
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("com.google.android.material:material:1.13.0")
+    implementation("androidx.fragment:fragment:1.8.5")
     
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")

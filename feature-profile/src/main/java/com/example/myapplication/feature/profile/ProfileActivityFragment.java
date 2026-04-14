@@ -11,9 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.R;
+import com.example.myapplication.feature.profile.R;
 import com.example.myapplication.core.data.db.AppDatabase;
-import com.example.myapplication.palay.data.repository.SessionManager;
+import com.example.myapplication.core.common.SessionManager;
 
 public class ProfileActivityFragment extends Fragment {
 

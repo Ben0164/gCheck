@@ -31,8 +31,10 @@
 
     <!-- Semantic Profit Colors -->
     <color name="profit_loss">#B3261E</color>
+    <color name="profit_loss_light">#FFEBEE</color>
     <color name="profit_low">#FFA500</color>
     <color name="profit_high">#1B5E20</color>
+    <color name="profit_high_light">#E8F5E9</color>
 
     <!-- Phase Progression Colors (Light to Dark) -->
     <color name="phase_land_prep">#D8F3DC</color>

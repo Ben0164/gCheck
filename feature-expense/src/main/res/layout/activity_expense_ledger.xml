@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <AutoCompleteTextView android:id="@+id/sp_activity" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <AutoCompleteTextView android:id="@+id/sp_method" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <AutoCompleteTextView android:id="@+id/sp_expense_type" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <AutoCompleteTextView android:id="@+id/sp_labor_type" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <AutoCompleteTextView android:id="@+id/sp_internal_hauling" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <AutoCompleteTextView android:id="@+id/sp_unit" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_product" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_quantity" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_price" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_other_method" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_daily_wage" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputEditText android:id="@+id/et_days" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputLayout android:id="@+id/til_other_method" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputLayout android:id="@+id/til_product" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputLayout android:id="@+id/til_labor_type" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputLayout android:id="@+id/til_internal_hauling" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <LinearLayout android:id="@+id/layout_standard_fields" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <LinearLayout android:id="@+id/layout_implicit_fields" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_total_ledger" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_form_total" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_recent_entries_title" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:id="@+id/tv_cost_label" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_expenses" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
+    <com.google.android.material.button.MaterialButton android:id="@+id/btn_save" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <com.google.android.material.button.MaterialButton android:id="@+id/btn_delete" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+</LinearLayout>

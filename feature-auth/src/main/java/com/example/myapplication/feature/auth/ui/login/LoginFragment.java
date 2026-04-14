@@ -5,17 +5,19 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.myapplication.R;
+import com.example.myapplication.feature.auth.R;
 import com.example.myapplication.feature.auth.repository.AuthRepository;
-import com.example.myapplication.palay.data.repository.SessionManager;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
+import com.example.myapplication.core.common.SessionManager;
+import com.example.myapplication.core.common.FeatureNavigationHost;
 
 public class LoginFragment extends Fragment {
 
@@ -28,39 +30,64 @@ public class LoginFragment extends Fragment {
 
         authRepository = new AuthRepository(requireContext());
 
-        TextInputLayout tilEmail = view.findViewById(R.id.til_login_email);
-        TextInputLayout tilPassword = view.findViewById(R.id.til_login_password);
-        TextInputEditText etEmail = view.findViewById(R.id.et_login_email);
-        TextInputEditText etPassword = view.findViewById(R.id.et_login_password);
-        MaterialButton btnLogin = view.findViewById(R.id.btn_login);
+        EditText etEmail = view.findViewById(R.id.et_login_email);
+        EditText etPassword = view.findViewById(R.id.et_login_password);
+        Button btnLogin = view.findViewById(R.id.btn_login);
+        TextView tvSignupLink = view.findViewById(R.id.tv_signup_link);
+        ImageView ivPasswordToggle = view.findViewById(R.id.iv_password_toggle);
 
         btnLogin.setOnClickListener(v -> {
             String email = etEmail.getText() != null ? etEmail.getText().toString().trim() : "";
             String password = etPassword.getText() != null ? etPassword.getText().toString().trim() : "";
 
             if (TextUtils.isEmpty(email)) {
-                tilEmail.setError("Email is required");
+                etEmail.setError("Email is required");
                 return;
             }
             if (TextUtils.isEmpty(password)) {
-                tilPassword.setError("Password is required");
+                etPassword.setError("Password is required");
                 return;
             }
 
-            tilEmail.setError(null);
-            tilPassword.setError(null);
+            etEmail.setError(null);
+            etPassword.setError(null);
             btnLogin.setEnabled(false);
 
             authRepository.login(email, password, user -> {
                 if (user != null) {
                     SessionManager.setCurrentUser(user);
                     Toast.makeText(requireContext(), R.string.login_success, Toast.LENGTH_SHORT).show();
-                    // Navigation will be handled via Activity
+                    // Navigate to MainActivity on successful login
+                    if (getActivity() != null && getActivity() instanceof FeatureNavigationHost) {
+                        ((FeatureNavigationHost) getActivity()).selectHomeTab();
+                    }
                 } else {
                     btnLogin.setEnabled(true);
                     Toast.makeText(requireContext(), "Invalid email or password", Toast.LENGTH_SHORT).show();
                 }
             });
+        });
+
+        // Handle signup link click
+        tvSignupLink.setOnClickListener(v -> {
+            if (getActivity() instanceof FeatureNavigationHost) {
+                ((FeatureNavigationHost) getActivity()).openFragment(new com.example.myapplication.feature.auth.ui.signup.SignupFragment());
+            }
+        });
+
+        // Handle password visibility toggle
+        ivPasswordToggle.setOnClickListener(v -> {
+            if (etPassword.getInputType() == (android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD)) {
+                // Show password
+                etPassword.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                ivPasswordToggle.setImageResource(R.drawable.ic_eye_open);
+            } else {
+                // Hide password
+                etPassword.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                ivPasswordToggle.setImageResource(R.drawable.ic_eye_closed);
+            }
+            // Move cursor to the end
+            etPassword.setSelection(etPassword.getText().length());
         });
 
         return view;

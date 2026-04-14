@@ -11,7 +11,7 @@ public class ProductEntity {
     private String farmerName;
     private double quantity;
     private String grade;
-    private double price;
+    private double price; // Floor price
     private double buyNowPrice;
     private long analysisId;
     private long createdAt;
@@ -20,6 +20,16 @@ public class ProductEntity {
     private double longitude;
     private boolean isSold;
     private long batchId;
+    // Posting type: "AI_VERIFIED" or "DEMO"
+    private String postType;
+    private boolean isVerified;
+    private String verificationMethod; // nullable, e.g., "Self-Declared", "Third-Party"
+    // Bidding system fields
+    private double currentHighestBid;
+    private long currentHighestBidderId;
+    private String listingStatus; // ACTIVE, SOLD, EXPIRED
+    private double finalSalePrice;
+    private long winningBuyerId;
 
     public ProductEntity(long farmerId, String farmerName, double quantity, String grade, 
                          double price, double buyNowPrice, long analysisId, long createdAt, 
@@ -67,4 +77,20 @@ public class ProductEntity {
     public void setSold(boolean sold) { isSold = sold; }
     public long getBatchId() { return batchId; }
     public void setBatchId(long batchId) { this.batchId = batchId; }
+    public String getPostType() { return postType; }
+    public void setPostType(String postType) { this.postType = postType; }
+    public boolean isVerified() { return isVerified; }
+    public void setVerified(boolean verified) { isVerified = verified; }
+    public String getVerificationMethod() { return verificationMethod; }
+    public void setVerificationMethod(String verificationMethod) { this.verificationMethod = verificationMethod; }
+    public double getCurrentHighestBid() { return currentHighestBid; }
+    public void setCurrentHighestBid(double currentHighestBid) { this.currentHighestBid = currentHighestBid; }
+    public long getCurrentHighestBidderId() { return currentHighestBidderId; }
+    public void setCurrentHighestBidderId(long currentHighestBidderId) { this.currentHighestBidderId = currentHighestBidderId; }
+    public String getListingStatus() { return listingStatus; }
+    public void setListingStatus(String listingStatus) { this.listingStatus = listingStatus; }
+    public double getFinalSalePrice() { return finalSalePrice; }
+    public void setFinalSalePrice(double finalSalePrice) { this.finalSalePrice = finalSalePrice; }
+    public long getWinningBuyerId() { return winningBuyerId; }
+    public void setWinningBuyerId(long winningBuyerId) { this.winningBuyerId = winningBuyerId; }
 }
